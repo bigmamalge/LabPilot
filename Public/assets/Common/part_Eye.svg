@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16.584" height="16.584" viewBox="0 0 16.584 16.584" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="eye" clip-path="url(#clip0_0_190)">
+<path id="Trac&#195;&#169;" d="M1.80296 8.06315C1.74537 8.21829 1.74537 8.38894 1.80296 8.54408C2.36384 9.90407 3.31591 11.0669 4.53847 11.8851C5.76102 12.7034 7.19901 13.1402 8.67011 13.1402C10.1412 13.1402 11.5792 12.7034 12.8018 11.8851C14.0243 11.0669 14.9764 9.90407 15.5373 8.54408C15.5949 8.38894 15.5949 8.21829 15.5373 8.06315C14.9764 6.70316 14.0243 5.54033 12.8018 4.72209C11.5792 3.90385 10.1412 3.46704 8.67011 3.46704C7.19901 3.46704 5.76102 3.90385 4.53847 4.72209C3.31591 5.54033 2.36384 6.70316 1.80296 8.06315Z" stroke="#52577A" stroke-width="2" stroke-linecap="round"/>
+<circle id="Pupille" cx="8.67011" cy="8.30" r="2.06" stroke="#52577A" stroke-width="2" stroke-linecap="round"/>
+</g>
+<defs>
+<clipPath id="clip0_0_190">
+<rect width="16.584" height="16.584" fill="white"/>
+</clipPath>
+</defs>
+</svg>
