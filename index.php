@@ -15,7 +15,7 @@
     <h1>Choisissez votre espace</h1>
     <p>Sélectionnez votre rôle pour accéder à votre espace LabPilot.</p>
     <nav class="roles" aria-label="Rôles">
-      <a class="role principal" href="enseignant/index.php">Enseignant-chercheur</a>
+      <a class="role principal" href="controllers/enseignant/TableauDeBordController.php">Enseignant-chercheur</a>
       <a class="role" href="participant/index.php">Participant</a>
       <a class="role" href="gestionnaire/index.php">Gestionnaire / ingénieur</a>
       <a class="role" href="responsable/index.php">Responsable</a>
