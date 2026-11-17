@@ -1,0 +1,166 @@
+:root {
+  --surface: #ffffff;
+  --surface-alt: #f5f6f9;
+  --neutral-bg: #eceef3;
+  --border: #e3e4e9;
+  --border-strong: #d2d4dd;
+  --text: #21254a;
+  --text-secondary: #52577a;
+  --text-muted: #6f6f73;
+  --primary: #d4451b;
+  --primary-hover: #b93a15;
+  --primary-light: #fbe4db;
+  --primary-text: #c23f18;
+  --info-bg: #e2ecf1;
+  --info-text: #3d6d89;
+  --sidebar: #282f63;
+  --sidebar-text-active: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+.login { display: grid; grid-template-columns: 258px minmax(0, 1fr); min-height: 100vh; }
+
+.brand {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 0 16px 20px;
+  background: var(--sidebar);
+  color: var(--sidebar-text-active);
+}
+.brand .logo { display: block; width: 150px; margin: 22px 0 0 10px; }
+.brand .logo img { display: block; width: 150px; height: auto; }
+.brand .role { margin: 18px 0 22px 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.01em; text-transform: uppercase; }
+
+.zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 37.333px 85.333px;
+  background: var(--surface-alt);
+}
+
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; }
+.bar p { margin: 0; font-size: 16px; font-weight: 500; color: var(--text-secondary); }
+.support { display: flex; align-items: center; gap: 10.667px; color: var(--text-secondary); font-size: 17.333px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+.support:hover, .support:focus-visible { color: var(--text); }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 760px;
+  max-width: 100%;
+  padding: 53.333px;
+  background: var(--surface);
+  border: 1.333px solid var(--border);
+  border-radius: 24px;
+}
+
+.heading { display: flex; flex-direction: column; gap: 10.667px; }
+.heading h1 { margin: 0; font-size: 40px; font-weight: 700; color: var(--text); }
+.heading p { margin: 0; font-size: 18.667px; line-height: 1.55; color: var(--text-secondary); }
+
+.credentials { display: flex; flex-direction: column; gap: 21.333px; }
+.field { display: flex; flex-direction: column; gap: 10.667px; }
+.field label { font-size: 17.333px; font-weight: 600; color: var(--text); }
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 69.333px;
+  padding: 0 21.333px;
+  background: var(--surface-alt);
+  border: 1.333px solid var(--border-strong);
+  border-radius: 10.667px;
+}
+.input:focus-within { background: var(--primary-light); border-color: var(--primary); box-shadow: 0 0 0 1.333px var(--primary); }
+.input img { flex: none; }
+.input input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--text);
+  font: 500 18.667px "Poppins", system-ui, sans-serif;
+  text-overflow: ellipsis;
+}
+.input input::placeholder { color: var(--text-muted); opacity: 1; }
+.toggle { display: flex; flex: none; padding: 0; background: none; border: 0; cursor: pointer; }
+
+.options { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.remember { position: relative; display: flex; align-items: center; gap: 10.667px; font-size: 17.333px; color: var(--text-secondary); cursor: pointer; }
+.remember input { position: absolute; opacity: 0; width: 24px; height: 24px; margin: 0; }
+.box { display: flex; align-items: center; justify-content: center; flex: none; width: 24px; height: 24px; background: var(--surface); border: 1.333px solid var(--border-strong); border-radius: 5.333px; }
+.box img { display: none; }
+.remember input:checked + .box { background: var(--primary); border-color: var(--primary); }
+.remember input:checked + .box img { display: block; }
+.remember input:focus-visible + .box { outline: 2px solid var(--primary); outline-offset: 2px; }
+.forgot { color: var(--primary-text); font-size: 17.333px; font-weight: 600; text-decoration: underline; white-space: nowrap; }
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 69.333px;
+  padding: 0 21.333px;
+  border: 1.333px solid var(--border-strong);
+  border-radius: 10.667px;
+  background: var(--surface);
+  color: var(--text);
+  font: 600 18.667px "Poppins", system-ui, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn.primary { background: var(--primary); border-color: var(--primary); color: var(--sidebar-text-active); }
+.btn.primary:hover, .btn.primary:focus-visible { background: var(--primary-hover); border-color: var(--primary-hover); }
+.btn.sso { background: var(--info-bg); border-color: var(--info-text); }
+.btn:not(.primary):hover, .btn:not(.primary):focus-visible { border-color: var(--text-secondary); }
+
+.divider { display: flex; align-items: center; gap: 16px; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1.333px; background: var(--border); }
+.divider span { font-size: 16px; font-weight: 500; color: var(--text-muted); white-space: nowrap; }
+
+.alt { display: flex; flex-direction: column; gap: 16px; }
+.g-mark { display: flex; align-items: center; justify-content: center; flex: none; width: 32px; height: 32px; background: var(--surface-alt); border: 1.333px solid var(--border); border-radius: 50%; }
+.g-mark img { display: block; width: 22px; height: 22px; object-fit: cover; }
+
+.note { display: flex; align-items: center; gap: 16px; padding: 16px; background: var(--neutral-bg); border-radius: 10.667px; }
+.note img { flex: none; }
+.note p { flex: 1; min-width: 0; margin: 0; font-size: 14.667px; line-height: 1.5; color: var(--text-secondary); }
+
+.legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 32px; font-size: 14.667px; }
+.legal a { color: var(--text-muted); text-decoration: none; }
+.legal a:hover, .legal a:focus-visible { color: var(--text); text-decoration: underline; }
+
+@media (max-width: 1100px) {
+  .zone { padding: 32px; }
+}
+
+@media (max-width: 900px) {
+  .login { grid-template-columns: 1fr; }
+  .brand { position: static; height: auto; padding: 0 16px 8px; }
+}
+
+@media (max-width: 640px) {
+  .zone { padding: 24px 16px; }
+  .card { padding: 28px 20px; }
+  .heading h1 { font-size: 30px; }
+  .options { flex-wrap: wrap; }
+}

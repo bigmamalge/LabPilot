@@ -1,13 +1,22 @@
 <?php
 
-require_once __DIR__ .'/../../Model.php';
+require_once __DIR__ . '/../../Model.php';
 
 class LaboratoireModel extends Model
 {
-    public function getAllLaboratoires(): array {
+    public function getAllLaboratoires(): array
+    {
         $pdo = $this->getPDO();
         $stmt = $pdo->query('SELECT * FROM laboratoire');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getLaboratoireById(int $id): ?array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT * FROM laboratoire WHERE ID_LABO = :id');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 }
 
