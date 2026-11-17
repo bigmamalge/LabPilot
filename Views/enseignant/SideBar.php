@@ -1,6 +1,6 @@
 <aside class="sidebar">
       <a class="logo" href="index.php"><img src="../../Public/assets/Common/Logo.png" alt="LabPilot"></a>
-      <div class="role"><?php echo $espace; ?></div>
+      <div class="role">espace <?php echo $poste; ?></div>
       <nav aria-label="Navigation principale">
         <a href="../../Controllers/enseignant/TableauDeBordController.php" <?php if($ThisPage == 1) { echo 'aria-current="page"'; } ?>><img src="../../Public/assets/Common/IconeTableauDeBord.svg" alt="" width="20" height="20"> Tableau de bord</a>
         <a href="../../Controllers/enseignant/ExperimentationsController.php" <?php if($ThisPage == 2) { echo 'aria-current="page"'; } ?>><img src="../../Public/assets/Common/IconeExperimentations.svg" alt="" width="20" height="20"> Mes expérimentations</a>
