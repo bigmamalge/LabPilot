@@ -1,7 +1,7 @@
 <?php
 
 
-require_once __DIR__.'/../model/RoleModel.php';
+require_once __DIR__.'/../models/tables/utilisateurs/RoleModel.php';
 
 echo "Test de la classe RoleModel :<br>";
 $roleModel = new RoleModel();

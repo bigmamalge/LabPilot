@@ -8,7 +8,7 @@ abstract class Model
 
     protected function getPDO(): PDO {
         if (self::$pdo === null) {
-            self::$pdo = new PDO('mysql:host=localhost;dbname=sae3', $this->user, $this->password);
+            self::$pdo = new PDO('mysql:host=localhost;dbname=sae', $this->user, $this->password);
         }
         return self::$pdo;
     }
