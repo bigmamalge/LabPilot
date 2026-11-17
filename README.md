@@ -89,6 +89,8 @@ Dans phpMyAdmin, onglet **Importer**, un fichier à la fois, **dans cet ordre** 
 | Tous les comptes, **après le script n°8** | `Test2026!` |
 | Comptes **1 à 21** sans le script n°8 | ❓ **inconnu** : le script de base ne stocke que des hash (SHA-256) dont le texte d'origine n'est pas connu |
 
+> La colonne **Mot de passe** des tableaux ci-dessous indique `Test2026!` pour chaque compte. Pour les comptes 1 à 21, cela suppose d'avoir lancé le script n°8.
+>
 > Pour pouvoir te connecter avec tous les comptes, lance le script n°8.
 > C'est un mot de passe de **test** : ne l'utilise jamais ailleurs.
 
@@ -101,60 +103,60 @@ Chaque compte a deux identifiants possibles :
 
 ### 🛠️ Administrateurs
 
-| ID | Nom | Mail | Identifiant SSO |
-|:-:|---|---|---|
-| 25 | Yanis Costa | `yanis.costa@univ-lemans.fr` | `i2500025` |
-| 26 | Anna Lise | `anna.lise@univ-lemans.fr` | `i2500026` |
+| ID | Nom | Mail | Identifiant SSO | Mot de passe |
+|:-:|---|---|---|---|
+| 25 | Yanis Costa | `yanis.costa@univ-lemans.fr` | `i2500025` | `Test2026!` |
+| 26 | Anna Lise | `anna.lise@univ-lemans.fr` | `i2500026` | `Test2026!` |
 
 ### 🏛️ Directeur de laboratoire
 
-| ID | Nom | Mail | Identifiant SSO |
-|:-:|---|---|---|
-| 24 | Marc Fontaine | `marc.fontaine@univ-lemans.fr` | `i2500024` |
+| ID | Nom | Mail | Identifiant SSO | Mot de passe |
+|:-:|---|---|---|---|
+| 24 | Marc Fontaine | `marc.fontaine@univ-lemans.fr` | `i2500024` | `Test2026!` |
 
 ### 👔 Responsables d'équipe de recherche
 
-| ID | Nom | Mail | Identifiant SSO | Équipe |
-|:-:|---|---|---|---|
-| 22 | Isabelle Renard | `isabelle.renard@univ-lemans.fr` | `i2500022` | Perception et Cognition |
-| 23 | Olivier Perrin | `olivier.perrin@univ-lemans.fr` | `i2500023` | Interactions Humain-Machine |
+| ID | Nom | Mail | Identifiant SSO | Équipe | Mot de passe |
+|:-:|---|---|---|---|---|
+| 22 | Isabelle Renard | `isabelle.renard@univ-lemans.fr` | `i2500022` | Perception et Cognition | `Test2026!` |
+| 23 | Olivier Perrin | `olivier.perrin@univ-lemans.fr` | `i2500023` | Interactions Humain-Machine | `Test2026!` |
 
 ### 🎓 Enseignants-chercheurs
 
-| ID | Nom | Mail | Identifiant SSO |
-|:-:|---|---|---|
-| 1 | Claire Dubois | `claire.dubois@univ-lemans.fr` | `i2500001` |
-| 2 | Antoine Lefevre | `antoine.lefevre@univ-lemans.fr` | `i2500002` |
-| 3 | Sophie Martin | `sophie.martin@univ-lemans.fr` | `i2500003` |
-| 4 | Julien Moreau | `julien.moreau@univ-lemans.fr` | `i2500004` |
-| 7 | Elodie Faure ¹ | `elodie.faure@univ-lemans.fr` | `i2500007` |
-| 27 | Alice Morel ² | `alice.morel@univ-lemans.fr` | `i2500027` |
+| ID | Nom | Mail | Identifiant SSO | Mot de passe |
+|:-:|---|---|---|---|
+| 1 | Claire Dubois | `claire.dubois@univ-lemans.fr` | `i2500001` | `Test2026!` |
+| 2 | Antoine Lefevre | `antoine.lefevre@univ-lemans.fr` | `i2500002` | `Test2026!` |
+| 3 | Sophie Martin | `sophie.martin@univ-lemans.fr` | `i2500003` | `Test2026!` |
+| 4 | Julien Moreau | `julien.moreau@univ-lemans.fr` | `i2500004` | `Test2026!` |
+| 7 | Elodie Faure ¹ | `elodie.faure@univ-lemans.fr` | `i2500007` | `Test2026!` |
+| 27 | Alice Morel ² | `alice.morel@univ-lemans.fr` | `i2500027` | `Test2026!` |
 
 ### 🧰 Gestionnaires / ingénieurs de laboratoire
 
-| ID | Nom | Mail | Identifiant SSO |
-|:-:|---|---|---|
-| 5 | Nadia Benali | `nadia.benali@univ-lemans.fr` | `i2500005` |
-| 6 | Thomas Garnier | `thomas.garnier@univ-lemans.fr` | `i2500006` |
+| ID | Nom | Mail | Identifiant SSO | Mot de passe |
+|:-:|---|---|---|---|
+| 5 | Nadia Benali | `nadia.benali@univ-lemans.fr` | `i2500005` | `Test2026!` |
+| 6 | Thomas Garnier | `thomas.garnier@univ-lemans.fr` | `i2500006` | `Test2026!` |
 
 ### 🙋 Participants
 
-| ID | Nom | Mail | Identifiant SSO |
-|:-:|---|---|---|
-| 8 | Lucas Bernard | `lucas.bernard@etu.univ-lemans.fr` | `i2500008` |
-| 9 | Emma Petit | `emma.petit@etu.univ-lemans.fr` | `i2500009` |
-| 10 | Hugo Robert | `hugo.robert@etu.univ-lemans.fr` | `i2500010` |
-| 11 | Lea Richard | `lea.richard@etu.univ-lemans.fr` | `i2500011` |
-| 12 | Louis Durand | `louis.durand@etu.univ-lemans.fr` | `i2500012` |
-| 13 | Chloe Leroy | `chloe.leroy@etu.univ-lemans.fr` | `i2500013` |
-| 14 | Nathan Simon | `nathan.simon@etu.univ-lemans.fr` | `i2500014` |
-| 15 | Manon Laurent | `manon.laurent@etu.univ-lemans.fr` | `i2500015` |
-| 16 | Theo Michel | `theo.michel@etu.univ-lemans.fr` | `i2500016` |
-| 17 | Camille Girard | `camille.girard@etu.univ-lemans.fr` | `i2500017` |
-| 18 | Maxime Roux | `maxime.roux@etu.univ-lemans.fr` | `i2500018` |
-| 19 | Ines Fournier ³ | `ines.fournier@etu.univ-lemans.fr` | `i2500019` |
-| 20 | Paul Lambert | `paul.lambert@etu.univ-lemans.fr` | `i2500020` |
-| 21 | Jade Bonnet ⁴ | `jade.bonnet@etu.univ-lemans.fr` | `i2500021` |
+| ID | Nom | Mail | Identifiant SSO | Mot de passe |
+|:-:|---|---|---|---|
+| 8 | Lucas Bernard | `lucas.bernard@etu.univ-lemans.fr` | `i2500008` | `Test2026!` |
+| 9 | Emma Petit | `emma.petit@etu.univ-lemans.fr` | `i2500009` | `Test2026!` |
+| 10 | Hugo Robert | `hugo.robert@etu.univ-lemans.fr` | `i2500010` | `Test2026!` |
+| 11 | Lea Richard | `lea.richard@etu.univ-lemans.fr` | `i2500011` | `Test2026!` |
+| 12 | Louis Durand | `louis.durand@etu.univ-lemans.fr` | `i2500012` | `Test2026!` |
+| 13 | Chloe Leroy | `chloe.leroy@etu.univ-lemans.fr` | `i2500013` | `Test2026!` |
+| 14 | Nathan Simon | `nathan.simon@etu.univ-lemans.fr` | `i2500014` | `Test2026!` |
+| 15 | Manon Laurent | `manon.laurent@etu.univ-lemans.fr` | `i2500015` | `Test2026!` |
+| 16 | Theo Michel | `theo.michel@etu.univ-lemans.fr` | `i2500016` | `Test2026!` |
+| 17 | Camille Girard | `camille.girard@etu.univ-lemans.fr` | `i2500017` | `Test2026!` |
+| 18 | Maxime Roux | `maxime.roux@etu.univ-lemans.fr` | `i2500018` | `Test2026!` |
+| 19 | Ines Fournier ³ | `ines.fournier@etu.univ-lemans.fr` | `i2500019` | `Test2026!` |
+| 20 | Paul Lambert | `paul.lambert@etu.univ-lemans.fr` | `i2500020` | `Test2026!` |
+| 21 | Jade Bonnet ⁴ | `jade.bonnet@etu.univ-lemans.fr` | `i2500021` | `Test2026!` |
 
 <sub>
 ¹ Gestionnaire dans les données de départ. L'exemple <code>ChangerRoleUtilisateur(7, 1)</code> du script d'exploitation de base la passe <b>enseignant-chercheur</b>.<br>
