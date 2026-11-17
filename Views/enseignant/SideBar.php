@@ -8,8 +8,8 @@
         <a href="../../Controllers/enseignant/ParticipantsController.php" <?php if($ThisPage == 4) { echo 'aria-current="page"'; } ?>><img src="../../Public/assets/Common/IconeParticipants.svg" alt="" width="20" height="20"> Participants</a>
         <a href="../../Controllers/enseignant/RessourcesController.php" <?php if($ThisPage == 5) { echo 'aria-current="page"'; } ?>><img src="../../Public/assets/Common/IconeRessources.svg" alt="" width="20" height="20"> Ressources &amp; documents</a>
         <a href="../../Controllers/enseignant/StatistiquesController.php" <?php if($ThisPage == 6) { echo 'aria-current="page"'; } ?>><img src="../../Public/assets/Common/IconeStatistiques.svg" alt="" width="20" height="20"> Statistiques</a>
-        <a href="communications.php"><img src="../../Public/assets/Common/IconeCommunications.svg" alt="" width="20" height="20"> Communications</a>
-        <a href="parametres.php"><img src="../../Public/assets/Common/IconeParametres.svg" alt="" width="20" height="20"> Paramètres</a>
+        <a href="../../Controllers/enseignant/CommunicationsController.php" <?php if($ThisPage == 7) { echo 'aria-current="page"'; } ?>><img src="../../Public/assets/Common/IconeCommunications.svg" alt="" width="20" height="20"> Communications</a>
+        <a href="../../Controllers/enseignant/ParametresController.php"><img src="../../Public/assets/Common/IconeParametres.svg" alt="" width="20" height="20"> Paramètres</a>
       </nav>
       <div class="spacer"></div>
       <hr>
