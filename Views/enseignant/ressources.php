@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../Public/css/style.css">
-  <link rel="stylesheet" href="../../Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css">
+  <link rel="stylesheet" href="Public/css/page.css">
 </head>
 <body>
   <input type="checkbox" id="theme-toggle" class="theme-check" aria-label="Mode sombre">
@@ -38,17 +38,17 @@
           </div>
           <div class="actions">
             <a class="btn" href="#"><svg width="20" height="22" viewBox="0 0 18 22" fill="none" stroke="#21254a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3"/><path d="M9 21l6.5-7.5C16.6 12.1 17 10.9 17 9a8 8 0 1 0-16 0c0 1.9.4 3.1 1.5 4.5z"/></svg>Réserver une ressource</a>
-            <a class="btn primary" href="#"><img src="../../Public/assets/Common/IconeAjouter.svg" alt="">Ajouter un document</a>
+            <a class="btn primary" href="#"><img src="Public/assets/Common/IconeAjouter.svg" alt="">Ajouter un document</a>
           </div>
         </div>
 
         <section class="stats" aria-label="Indicateurs">
           <article class="card stat">
-            <div class="top"><span class="ico "><img src="../../Public/assets/Common/part_Doc.svg" alt=""></span><span class="delta neutral">4 expérimentations</span></div>
+            <div class="top"><span class="ico "><img src="Public/assets/Common/part_Doc.svg" alt=""></span><span class="delta neutral">4 expérimentations</span></div>
             <div class="value">14</div><div class="label">Documents totaux</div>
           </article>
           <article class="card stat">
-            <div class="top"><span class="ico ok-bg"><img src="../../Public/assets/Common/res_PinGreen.svg" alt=""></span><span class="delta up">2 libres cet après-midi</span></div>
+            <div class="top"><span class="ico ok-bg"><img src="Public/assets/Common/res_PinGreen.svg" alt=""></span><span class="delta up">2 libres cet après-midi</span></div>
             <div class="value">3/5</div><div class="label">Salles disponibles</div>
           </article>
           <article class="card stat">
@@ -56,7 +56,7 @@
             <div class="value">4</div><div class="label">Équipements réservés</div>
           </article>
           <article class="card stat">
-            <div class="top"><span class="ico warn"><img src="../../Public/assets/Common/Statistiques3.svg" alt=""></span><span class="delta neutral">sur 1 Go</span></div>
+            <div class="top"><span class="ico warn"><img src="Public/assets/Common/Statistiques3.svg" alt=""></span><span class="delta neutral">sur 1 Go</span></div>
             <div class="value">128 Mo</div><div class="label">Espace de stockage utilisé</div>
           </article>
         </section>
@@ -70,75 +70,75 @@
           <h2 class="big sm">Documents de mes expérimentations</h2>
           <p class="sub">Protocoles, questionnaires, fiches de consentement et documents administratifs.</p>
           <div class="filters in">
-            <label class="search wide flat"><img src="../../Public/assets/Common/res_Search.svg" alt=""><input type="search" placeholder="Rechercher un document..." aria-label="Rechercher un document"></label>
+            <label class="search wide flat"><img src="Public/assets/Common/res_Search.svg" alt=""><input type="search" placeholder="Rechercher un document..." aria-label="Rechercher un document"></label>
             <label class="select flat"><select aria-label="Type"><option>Tous les types</option></select></label>
           </div>
           <table class="data docs">
             <thead><tr><th>Document</th><th>Type</th><th>Expérimentation</th><th>Ajouté le</th><th>Taille</th><th></th></tr></thead>
             <tbody>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Protocole_experimental.pdf</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Protocole_experimental.pdf</b></span></td>
                 <td><span class="tag sm violet">Protocole</span></td><td class="soft">Étude mémoire visuelle</td><td class="soft">01/01/2026</td><td class="soft">1,2 Mo</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Questionnaire_pre-test.docx</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Questionnaire_pre-test.docx</b></span></td>
                 <td><span class="tag sm violet">Questionnaire</span></td><td class="soft">Étude mémoire visuelle</td><td class="soft">02/01/2026</td><td class="soft">240 Ko</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Fiche_de_consentement.pdf</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Fiche_de_consentement.pdf</b></span></td>
                 <td><span class="tag sm ok">Consentement</span></td><td class="soft">Étude mémoire visuelle</td><td class="soft">03/01/2026</td><td class="soft">230 Ko</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Guide_entretien.pdf</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Guide_entretien.pdf</b></span></td>
                 <td><span class="tag sm violet">Protocole</span></td><td class="soft">Entretien qualitatif - Lot 2</td><td class="soft">28/08/2026</td><td class="soft">850 Ko</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Grille_analyse.xlsx</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Grille_analyse.xlsx</b></span></td>
                 <td><span class="tag sm ">Administratif</span></td><td class="soft">Entretien qualitatif - Lot 2</td><td class="soft">28/08/2026</td><td class="soft">150 Ko</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Questionnaire_UX.pdf</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Questionnaire_UX.pdf</b></span></td>
                 <td><span class="tag sm violet">Questionnaire</span></td><td class="soft">Test utilisateur - nouvelle IHM</td><td class="soft">20/09/2026</td><td class="soft">410 Ko</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Autorisation_enregistrement.pdf</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Autorisation_enregistrement.pdf</b></span></td>
                 <td><span class="tag sm ok">Consentement</span></td><td class="soft">Test utilisateur - nouvelle IHM</td><td class="soft">20/09/2026</td><td class="soft">190 Ko</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
               <tr>
-                <td><span class="who2"><span class="fileico"><img src="../../Public/assets/Common/res_File.svg" alt=""></span><b>Rapport_pilote.pdf</b></span></td>
+                <td><span class="who2"><span class="fileico"><img src="Public/assets/Common/res_File.svg" alt=""></span><b>Rapport_pilote.pdf</b></span></td>
                 <td><span class="tag sm ">Administratif</span></td><td class="soft">Perception sonore - Pilote</td><td class="soft">10/08/2026</td><td class="soft">2,1 Mo</td>
                 <td><div class="row-actions">
-                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="../../Public/assets/Common/res_Eye.svg" alt=""></button>
-                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="../../Public/assets/Common/res_Download.svg" alt=""></button>
-                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="../../Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
+                  <button class="ghost rnd" type="button" aria-label="Voir"><img src="Public/assets/Common/res_Eye.svg" alt=""></button>
+                  <button class="ghost rnd" type="button" aria-label="Télécharger"><img src="Public/assets/Common/res_Download.svg" alt=""></button>
+                  <button class="ghost rnd del" type="button" aria-label="Supprimer"><img src="Public/assets/Common/res_Trash.svg" alt=""></button></div></td>
               </tr>
             </tbody>
           </table>

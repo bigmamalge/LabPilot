@@ -15,9 +15,10 @@
   <div class="sso">
     <main class="formulaire">
       <div class="bloc">
-        <a class="logo" href="index.php"><img src="Public/assets/Connexion/sso_logo.svg" alt="Le Mans Université"></a>
+        <a class="logo" href="connection.php"><img src="Public/assets/Connexion/sso_logo.svg"
+            alt="Le Mans Université"></a>
 
-        <form method="post" action="Controllers/Controller.php">
+        <form method="post" action="index.php?Controlleur=connectionController">
           <div class="champ actif">
             <label for="identifiant">Identifiant: *</label>
             <input type="text" id="identifiant" name="identifiant" placeholder="i2500000" autocomplete="username"

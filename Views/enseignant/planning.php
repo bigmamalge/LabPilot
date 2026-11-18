@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../Public/css/style.css">
-  <link rel="stylesheet" href="../../Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css">
+  <link rel="stylesheet" href="Public/css/page.css">
 </head>
 <body>
   <input type="checkbox" id="theme-toggle" class="theme-check" aria-label="Mode sombre">
@@ -36,14 +36,14 @@
             <h1>Mon planning</h1>
             <p class="lead">Gérez vos créneaux, validez les demandes et suivez le remplissage de vos sessions.</p>
           </div>
-          <div class="actions"><a class="btn primary" href="#"><img src="../../Public/assets/Common/plan_IconeAjouter.svg" alt="">Nouveau créneau</a></div>
+          <div class="actions"><a class="btn primary" href="#"><img src="Public/assets/Common/plan_IconeAjouter.svg" alt="">Nouveau créneau</a></div>
         </div>
 
         <div class="cols plan-cols">
           <section class="card pad">
             <div class="cal-bar">
               <h2>Semaine du 22 au 26 sept. 2026</h2>
-              <button class="circle" type="button" aria-label="Semaine suivante"><img src="../../Public/assets/Common/plan_ChevronRight.svg" alt=""></button>
+              <button class="circle" type="button" aria-label="Semaine suivante"><img src="Public/assets/Common/plan_ChevronRight.svg" alt=""></button>
               <span class="grow"></span>
               <div class="seg" role="tablist"><button role="tab" aria-selected="true" type="button">Semaine</button><button role="tab" aria-selected="false" type="button">Mois</button></div>
               <label class="select sm"><select aria-label="Filtrer"><option>Toutes les expérimentations</option></select></label>
@@ -77,8 +77,8 @@
               <form class="form" onsubmit="return false">
                 <label>Expérimentation<span class="select"><select><option>Étude mémoire visuelle</option></select></span></label>
                 <div class="two">
-                  <label>Date<span class="input icon"><input value="26/09/2026"><img src="../../Public/assets/Common/plan_Groupe.svg" alt=""></span></label>
-                  <label>Heure de début<span class="input icon"><input value="14 : 00"><img src="../../Public/assets/Common/plan_Clock.svg" alt=""></span></label>
+                  <label>Date<span class="input icon"><input value="26/09/2026"><img src="Public/assets/Common/plan_Groupe.svg" alt=""></span></label>
+                  <label>Heure de début<span class="input icon"><input value="14 : 00"><img src="Public/assets/Common/plan_Clock.svg" alt=""></span></label>
                 </div>
                 <div class="two">
                   <label>Durée<span class="select"><select><option>1 h 00</option><option>1 h 30</option></select></span></label>

@@ -18,8 +18,8 @@ $poste = "Enseignant-chercheur";
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../../Public/css/style.css">
-  <link rel="stylesheet" href="../../Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css">
+  <link rel="stylesheet" href="Public/css/page.css">
 </head>
 
 <body>
@@ -41,9 +41,9 @@ $poste = "Enseignant-chercheur";
               associées et rétributions.</p>
           </div>
           <div class="actions">
-            <a class="btn" href="ressources.php"><img src="../../Public/assets/Common/exp_IconeDocument.svg"
+            <a class="btn" href="ressources.php"><img src="Public/assets/Common/exp_IconeDocument.svg"
                 alt="">Depuis un modèle</a>
-            <a class="btn primary" href="#"><img src="../../Public/assets/Common/exp_IconeAjouter.svg" alt="">Créer une
+            <a class="btn primary" href="#"><img src="Public/assets/Common/exp_IconeAjouter.svg" alt="">Créer une
               expérimentation</a>
           </div>
         </div>
@@ -149,13 +149,13 @@ $poste = "Enseignant-chercheur";
               </div>
               <h3 class="h-sm">Ressources associées</h3>
               <div class="files">
-                <div class="file"><img src="../../Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
+                <div class="file"><img src="Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
                   <div><b>Protocole_experimental.pdf</b><span>Ajouté le 01/01/2026</span></div>
                 </div>
-                <div class="file"><img src="../../Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
+                <div class="file"><img src="Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
                   <div><b>Questionnaire_pre-test.docx</b><span>Ajouté le 01/01/2026</span></div>
                 </div>
-                <div class="file"><img src="../../Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
+                <div class="file"><img src="Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
                   <div><b>Fiche_de_consentement.pdf</b><span>Ajouté le 01/01/2026</span></div>
                 </div>
               </div>

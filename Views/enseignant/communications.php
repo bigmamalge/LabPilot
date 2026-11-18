@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../Public/css/style.css">
-  <link rel="stylesheet" href="../../Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css">
+  <link rel="stylesheet" href="Public/css/page.css">
 </head>
 <body>
   <input type="checkbox" id="theme-toggle" class="theme-check" aria-label="Mode sombre">
@@ -63,7 +63,7 @@
               <div class="send-row">
                 <p>Ce message sera envoyé à <b>18 participants.</b></p>
                 <button class="btn-lg" type="button">Enregistrer en brouillon</button>
-                <button class="btn-lg primary send" type="submit"><img src="../../Public/assets/Enseignant/com_SendIcon.svg" alt="">Envoyer</button>
+                <button class="btn-lg primary send" type="submit"><img src="Public/assets/Enseignant/com_SendIcon.svg" alt="">Envoyer</button>
               </div>
             </form>
           </section>

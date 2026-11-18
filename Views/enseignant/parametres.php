@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../Public/css/style.css">
-  <link rel="stylesheet" href="../../Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css">
+  <link rel="stylesheet" href="Public/css/page.css">
 </head>
 <body>
   <input type="checkbox" id="theme-toggle" class="theme-check" aria-label="Mode sombre">
@@ -40,7 +40,7 @@
         </div>
 
         <div class="set-cols">
-          <nav class="card set-nav" aria-label="Paramètres"><a href="#" aria-current="true"><img src="../../Public/assets/Common/par_Trace1.svg" alt="">Profil</a><a href="#"><img src="../../Public/assets/Common/par_Trace2.svg" alt="">Préférences</a><a href="#"><img src="../../Public/assets/Common/par_Trace3.svg" alt="">Notifications</a><a href="#"><img src="../../Public/assets/Common/par_Trace4.svg" alt="">Sécurité</a><a href="#"><img src="../../Public/assets/Common/par_Trace5.svg" alt="">Mes modèles</a><a href="#"><img src="../../Public/assets/Common/par_Trace6.svg" alt="">Intégrations</a><a href="#"><img src="../../Public/assets/Common/par_Trace7.svg" alt="">Confidentialité &amp; RGPD</a></nav>
+          <nav class="card set-nav" aria-label="Paramètres"><a href="#" aria-current="true"><img src="Public/assets/Common/par_Trace1.svg" alt="">Profil</a><a href="#"><img src="Public/assets/Common/par_Trace2.svg" alt="">Préférences</a><a href="#"><img src="Public/assets/Common/par_Trace3.svg" alt="">Notifications</a><a href="#"><img src="Public/assets/Common/par_Trace4.svg" alt="">Sécurité</a><a href="#"><img src="Public/assets/Common/par_Trace5.svg" alt="">Mes modèles</a><a href="#"><img src="Public/assets/Common/par_Trace6.svg" alt="">Intégrations</a><a href="#"><img src="Public/assets/Common/par_Trace7.svg" alt="">Confidentialité &amp; RGPD</a></nav>
           <section class="card pad lg set-form">
             <h2 class="big sm">Profil</h2>
             <div class="photo"><span class="avatar xl"><?php echo $initiales; ?></span><div><button class="btn-lg sm" type="button">Changer la photo</button><small>JPG ou PNG, 2 Mo maximum.</small></div></div>

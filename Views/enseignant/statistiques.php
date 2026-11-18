@@ -17,8 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../Public/css/style.css">
-  <link rel="stylesheet" href="../../Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css">
+  <link rel="stylesheet" href="Public/css/page.css">
 </head>
 <body>
   <input type="checkbox" id="theme-toggle" class="theme-check" aria-label="Mode sombre">
@@ -36,7 +36,7 @@
             <h1>Statistiques</h1>
             <p class="lead">Analysez les inscriptions, la participation et les profils de vos participants pour piloter vos expérimentations.</p>
           </div>
-          <div class="actions"><a class="btn primary" href="#"><img src="../../Public/assets/Common/stat_Group.svg" alt="" style="filter:brightness(0) invert(1)">Exporter le rapport (PDF)</a></div>
+          <div class="actions"><a class="btn primary" href="#"><img src="Public/assets/Common/stat_Group.svg" alt="" style="filter:brightness(0) invert(1)">Exporter le rapport (PDF)</a></div>
         </div>
 
         <div class="filters tight">
@@ -46,15 +46,15 @@
 
         <section class="stats" aria-label="Indicateurs">
           <article class="card stat">
-            <div class="top"><span class="ico sm"><img src="../../Public/assets/Common/stat_BiPeople.svg" alt=""></span><span class="delta up">+12 vs mois dernier</span></div>
+            <div class="top"><span class="ico sm"><img src="Public/assets/Common/stat_BiPeople.svg" alt=""></span><span class="delta up">+12 vs mois dernier</span></div>
             <div class="value">187</div><div class="label">Participants inscrits</div>
           </article>
           <article class="card stat">
-            <div class="top"><span class="ico sm"><img src="../../Public/assets/Common/stat_Groupe.svg" alt=""></span><span class="delta up">+4% vs mois dernier</span></div>
+            <div class="top"><span class="ico sm"><img src="Public/assets/Common/stat_Groupe.svg" alt=""></span><span class="delta up">+4% vs mois dernier</span></div>
             <div class="value">78%</div><div class="label">Taux de participation moyen</div>
           </article>
           <article class="card stat">
-            <div class="top"><span class="ico sm"><img src="../../Public/assets/Common/stat_Trace1.svg" alt=""></span><span class="delta todo">-1% vs mois dernier</span></div>
+            <div class="top"><span class="ico sm"><img src="Public/assets/Common/stat_Trace1.svg" alt=""></span><span class="delta todo">-1% vs mois dernier</span></div>
             <div class="value">6%</div><div class="label">Taux d'annulation</div>
           </article>
           <article class="card stat">

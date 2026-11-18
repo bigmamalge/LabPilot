@@ -18,8 +18,8 @@ $poste = "Enseignant-chercheur";
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../../Public/css/style.css">
-  <link rel="stylesheet" href="../../Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css">
+  <link rel="stylesheet" href="Public/css/page.css">
 </head>
 
 <body>
@@ -32,16 +32,16 @@ $poste = "Enseignant-chercheur";
     <div class="main">
       <header class="topbar">
         <label class="search">
-          <img src="../../Public/assets/Common/RechercheIco.svg" alt="">
+          <img src="Public/assets/Common/RechercheIco.svg" alt="">
           <input type="search" placeholder="Rechercher une expérimentation..." aria-label="Rechercher">
         </label>
         <div class="grow"></div>
         <label class="icon-btn" for="theme-toggle" aria-label="Basculer le thème jour/nuit"><img
-            src="../../Public/assets/Common/Trace.svg" alt=""></label>
-        <button class="lang" type="button">FR - Français <img src="../../Public/assets/Common/FlecheBas.svg"
+            src="Public/assets/Common/Trace.svg" alt=""></label>
+        <button class="lang" type="button">FR - Français <img src="Public/assets/Common/FlecheBas.svg"
             alt=""></button>
         <button class="icon-btn bell" type="button" aria-label="Notifications"><img
-            src="../../Public/assets/Common/Notifications.svg" alt=""></button>
+            src="Public/assets/Common/Notifications.svg" alt=""></button>
         <div class="profile">
           <span class="avatar"><?php echo $initiales; ?></span>
           <span class="who"><b><?php echo $nom_complet; ?></b><span><?php echo $fonction; ?></span></span>
@@ -56,35 +56,35 @@ $poste = "Enseignant-chercheur";
             <p class="lead">Voici l'état de vos expérimentations et ce qui demande votre attention aujourd'hui.</p>
           </div>
           <div class="actions">
-            <a class="btn" href="ressources.php"><img src="../../Public/assets/Common/RessourcesDocuments2.svg"
+            <a class="btn" href="ressources.php"><img src="Public/assets/Common/RessourcesDocuments2.svg"
                 alt="">Depuis un modèle</a>
-            <a class="btn primary" href="experimentations.php"><img src="../../Public/assets/Common/IconeAjouter.svg"
+            <a class="btn primary" href="experimentations.php"><img src="Public/assets/Common/IconeAjouter.svg"
                 alt="">Créer une expérimentation</a>
           </div>
         </div>
 
         <section class="stats" aria-label="Indicateurs">
           <article class="card stat">
-            <div class="top"><span class="ico"><img src="../../Public/assets/Common/CercleIcone.svg" alt=""><img
-                  class="check" src="../../Public/assets/Common/IconeValidation.svg" alt=""></span><span
+            <div class="top"><span class="ico"><img src="Public/assets/Common/CercleIcone.svg" alt=""><img
+                  class="check" src="Public/assets/Common/IconeValidation.svg" alt=""></span><span
                 class="delta up">+2 ce mois-ci</span></div>
             <div class="value">6</div>
             <div class="label">Expérimentations actives</div>
           </article>
           <article class="card stat">
-            <div class="top"><span class="ico warn"><img src="../../Public/assets/Common/IconeInscriptions.svg"
+            <div class="top"><span class="ico warn"><img src="Public/assets/Common/IconeInscriptions.svg"
                   alt=""></span><span class="delta todo">À traiter</span></div>
             <div class="value">9</div>
             <div class="label">Inscriptions en attente</div>
           </article>
           <article class="card stat">
-            <div class="top"><span class="ico"><img src="../../Public/assets/Common/Statistiques2.svg"
+            <div class="top"><span class="ico"><img src="Public/assets/Common/Statistiques2.svg"
                   alt=""></span><span class="delta up">+4% vs. dernier mois</span></div>
             <div class="value">78%</div>
             <div class="label">Taux de participation moyen</div>
           </article>
           <article class="card stat">
-            <div class="top"><span class="ico"><img src="../../Public/assets/Common/Statistiques3.svg"
+            <div class="top"><span class="ico"><img src="Public/assets/Common/Statistiques3.svg"
                   alt=""></span><span class="delta neutral">Salle B204</span></div>
             <div class="value">Auj. 14h00</div>
             <div class="label">Prochaine session</div>
@@ -126,9 +126,9 @@ $poste = "Enseignant-chercheur";
                   <td>Auj. 14h00 (Salle B204)</td>
                   <td>
                     <div class="row-actions"><button class="ghost" type="button"><img
-                          src="../../Public/assets/Common/BoutonActionLigne1.svg"
+                          src="Public/assets/Common/BoutonActionLigne1.svg"
                           alt="Voir le planning"></button><button class="ghost" type="button"><img
-                          src="../../Public/assets/Common/BoutonActionInscription1.svg" alt="Modifier"></button></div>
+                          src="Public/assets/Common/BoutonActionInscription1.svg" alt="Modifier"></button></div>
                   </td>
                 </tr>
                 <tr data-status="run">
@@ -140,9 +140,9 @@ $poste = "Enseignant-chercheur";
                   <td>Demain 09h30 (Visio)</td>
                   <td>
                     <div class="row-actions"><button class="ghost" type="button"><img
-                          src="../../Public/assets/Common/BoutonActionLigne1.svg"
+                          src="Public/assets/Common/BoutonActionLigne1.svg"
                           alt="Voir le planning"></button><button class="ghost" type="button"><img
-                          src="../../Public/assets/Common/BoutonActionInscription1.svg" alt="Modifier"></button></div>
+                          src="Public/assets/Common/BoutonActionInscription1.svg" alt="Modifier"></button></div>
                   </td>
                 </tr>
                 <tr data-status="draft">
@@ -154,7 +154,7 @@ $poste = "Enseignant-chercheur";
                   <td>Non planifié</td>
                   <td>
                     <div class="row-actions"><button class="ghost" type="button"><img
-                          src="../../Public/assets/Common/BoutonActionInscription1.svg" alt="Modifier"></button></div>
+                          src="Public/assets/Common/BoutonActionInscription1.svg" alt="Modifier"></button></div>
                   </td>
                 </tr>
                 <tr data-status="run">
@@ -166,7 +166,7 @@ $poste = "Enseignant-chercheur";
                   <td>Jeu. 11h00 (Salle A102)</td>
                   <td>
                     <div class="row-actions"><button class="ghost" type="button"><img
-                          src="../../Public/assets/Common/BoutonActionLigne1.svg" alt="Voir le planning"></button></div>
+                          src="Public/assets/Common/BoutonActionLigne1.svg" alt="Voir le planning"></button></div>
                   </td>
                 </tr>
               </tbody>
@@ -183,9 +183,9 @@ $poste = "Enseignant-chercheur";
                 <div class="info"><b>Lucas Tessier</b><span>Étude mémoire visuelle (créneau Ven. 10h00)</span></div>
                 <div class="btns">
                   <button class="ghost" type="button" aria-label="Accepter Lucas Tessier"><img
-                      src="../../Public/assets/Common/Groupe.svg" alt=""></button>
+                      src="Public/assets/Common/Groupe.svg" alt=""></button>
                   <button class="ghost" type="button" aria-label="Refuser Lucas Tessier"><img
-                      src="../../Public/assets/Common/Groupe1.svg" alt=""></button>
+                      src="Public/assets/Common/Groupe1.svg" alt=""></button>
                 </div>
               </div>
               <div class="request">
@@ -194,9 +194,9 @@ $poste = "Enseignant-chercheur";
                 </div>
                 <div class="btns">
                   <button class="ghost" type="button" aria-label="Accepter Manon Albert"><img
-                      src="../../Public/assets/Common/Groupe.svg" alt=""></button>
+                      src="Public/assets/Common/Groupe.svg" alt=""></button>
                   <button class="ghost" type="button" aria-label="Refuser Manon Albert"><img
-                      src="../../Public/assets/Common/Groupe1.svg" alt=""></button>
+                      src="Public/assets/Common/Groupe1.svg" alt=""></button>
                 </div>
               </div>
               <div class="request">
@@ -204,9 +204,9 @@ $poste = "Enseignant-chercheur";
                 <div class="info"><b>Karim Benali</b><span>Questionnaire post-test (créneau Jeu. 11h00)</span></div>
                 <div class="btns">
                   <button class="ghost" type="button" aria-label="Accepter Karim Benali"><img
-                      src="../../Public/assets/Common/Groupe.svg" alt=""></button>
+                      src="Public/assets/Common/Groupe.svg" alt=""></button>
                   <button class="ghost" type="button" aria-label="Refuser Karim Benali"><img
-                      src="../../Public/assets/Common/Groupe1.svg" alt=""></button>
+                      src="Public/assets/Common/Groupe1.svg" alt=""></button>
                 </div>
               </div>
             </section>
@@ -240,12 +240,12 @@ $poste = "Enseignant-chercheur";
               rétributions</a>
           </div>
           <div class="feed">
-            <div class="feed-item"><span class="badge"><img src="../../Public/assets/Common/IconeAlerte.svg"
+            <div class="feed-item"><span class="badge"><img src="Public/assets/Common/IconeAlerte.svg"
                   alt=""></span>
               <div><b>Incident signalé - Étude mémoire visuelle</b><span>Participant absent au créneau du 21/09, session
                   à reprogrammer</span></div>
             </div>
-            <div class="feed-item"><span class="badge ok"><img src="../../Public/assets/Common/IconePaiement.svg"
+            <div class="feed-item"><span class="badge ok"><img src="Public/assets/Common/IconePaiement.svg"
                   alt=""></span>
               <div><b>Rétributions envoyées</b><span>12 coupons envoyés aux participants de « Perception sonore - Pilote
                   »</span></div>
