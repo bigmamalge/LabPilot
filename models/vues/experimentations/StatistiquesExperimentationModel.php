@@ -18,5 +18,17 @@ class StatistiquesExperimentationModel extends Model
         $stmt->execute(['idExp' => $idExp]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getTauxParticipationMoyenByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT AVG(statistiquesexperimentation.TAUX_PARTICIPATION) AS tauxMoyen,
+                                      COUNT(statistiquesexperimentation.TAUX_PARTICIPATION) AS nbExpMesurees
+                                FROM gestion
+                                INNER JOIN statistiquesexperimentation ON statistiquesexperimentation.ID_EXP = gestion.ID_EXP
+                                WHERE gestion.ID_USER = :id');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 

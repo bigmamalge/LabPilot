@@ -1,13 +1,11 @@
 <?php
 require_once __DIR__ . '/../models/tables/utilisateurs/UtilisateurModel.php';
 
-if (isset($_POST["identifiant"]) && isset($_POST["password"])) {
+if (isset($_POST["identifiantsso"]) && isset($_POST["password"])) {
 
     $UtilisateurModel = new UtilisateurModel();
 
-    $utilisateur = $UtilisateurModel->getUtilisateurByIdSso($_POST["identifiant"]);
-
-    //var_dump($utilisateur);
+    $utilisateur = $UtilisateurModel->getUtilisateurByIdSso($_POST["identifiantsso"]);
 
     if ($utilisateur && password_verify($_POST["password"], $utilisateur["MDP_USER"])) {
         $_SESSION["id"] = $utilisateur["ID_USER"];

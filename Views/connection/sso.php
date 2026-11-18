@@ -20,8 +20,8 @@
 
         <form method="post" action="index.php?Controlleur=connectionController">
           <div class="champ actif">
-            <label for="identifiant">Identifiant: *</label>
-            <input type="text" id="identifiant" name="identifiant" placeholder="i2500000" autocomplete="username"
+            <label for="identifiantsso">Identifiant: *</label>
+            <input type="text" id="identifiantsso" name="identifiantsso" placeholder="i2500000" autocomplete="username"
               required>
           </div>
 

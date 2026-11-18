@@ -18,5 +18,19 @@ class IncidentModel extends Model
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
+
+    public function getIncidentsByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT incident.*, experimentation.TITRE_EXP,
+                                      DATE_FORMAT(incident.DATE_INC, "%d/%m") AS DATE_INC_COURTE
+                                FROM gestion
+                                INNER JOIN experimentation ON experimentation.ID_EXP = gestion.ID_EXP
+                                INNER JOIN incident ON incident.ID_EXP = experimentation.ID_EXP
+                                WHERE gestion.ID_USER = :id
+                                ORDER BY incident.DATE_INC DESC, incident.HEURE_INC DESC');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
