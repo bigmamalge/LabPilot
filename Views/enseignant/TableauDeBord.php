@@ -9,12 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="Public/css/style.css">
-  <link rel="stylesheet" href="Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css?v=<?php echo filemtime(__DIR__ . "/../../Public/css/style.css"); ?>">
+  <link rel="stylesheet" href="Public/css/page.css?v=<?php echo filemtime(__DIR__ . "/../../Public/css/page.css"); ?>">
 </head>
 
 <body>
-  <input type="checkbox" id="theme-toggle" class="theme-check" aria-label="Mode sombre">
+  <?php require_once __DIR__ . '/themeToggle.php'; ?>
   <div class="layout">
 
     <?php $ThisPage = 1;
@@ -27,8 +27,8 @@
           <input type="search" placeholder="Rechercher une expérimentation..." aria-label="Rechercher">
         </label>
         <div class="grow"></div>
-        <label class="icon-btn" for="theme-toggle" aria-label="Basculer le thème jour/nuit"><img
-            src="Public/assets/Common/Trace.svg" alt=""></label>
+        <label class="icon-btn" for="theme-toggle" aria-label="Basculer le thème jour/nuit"><img class="moon"
+            src="Public/assets/Common/Trace.svg" alt=""><img class="sun" src="Public/assets/Common/Soleil.svg" alt=""></label>
         <button class="lang" type="button">FR - Français <img src="Public/assets/Common/FlecheBas.svg" alt=""></button>
         <button class="icon-btn bell" type="button" aria-label="Notifications"><img
             src="Public/assets/Common/Notifications.svg" alt=""></button>

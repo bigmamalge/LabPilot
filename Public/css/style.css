@@ -387,5 +387,9 @@ td.name small { font-size: 11px; color: var(--text-secondary); font-weight: 500;
 
 :root:has(#theme-toggle:checked) label[for="theme-toggle"] img { filter: brightness(0) invert(1); }
 
+.icon-btn img.sun { display: none; }
+:root:has(#theme-toggle:checked) .icon-btn img.moon { display: none; }
+:root:has(#theme-toggle:checked) .icon-btn img.sun { display: block; }
+
 .theme-check { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 label.icon-btn { cursor: pointer; }

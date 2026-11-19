@@ -19,6 +19,13 @@ class UtilisateurModel extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 
+    public function setThemeUtilisateur(int $id, string $theme): bool
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('UPDATE utilisateur SET THEME_USER = :theme WHERE ID_USER = :id');
+        return $stmt->execute(['theme' => $theme, 'id' => $id]);
+    }
+
     public function getUtilisateurByIdSso(string $idSso): ?array
     {
         $pdo = $this->getPDO();

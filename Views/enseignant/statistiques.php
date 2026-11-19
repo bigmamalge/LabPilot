@@ -7,11 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Public/css/style.css">
-  <link rel="stylesheet" href="Public/css/page.css">
+  <link rel="stylesheet" href="Public/css/style.css?v=<?php echo filemtime(__DIR__ . "/../../Public/css/style.css"); ?>">
+  <link rel="stylesheet" href="Public/css/page.css?v=<?php echo filemtime(__DIR__ . "/../../Public/css/page.css"); ?>">
 </head>
 <body>
-  <input type="checkbox" id="theme-toggle" class="theme-check" aria-label="Mode sombre">
+  <?php require_once __DIR__ . '/themeToggle.php'; ?>
   <div class="layout">
     <?php $ThisPage = 6;
     require_once __DIR__ . '/SideBar.php'; ?>
