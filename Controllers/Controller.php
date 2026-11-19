@@ -13,7 +13,7 @@ if (isset($_POST["identifiantsso"]) && isset($_POST["password"])) {
 
         echo "Connexion réussie !";
         $roleID = $utilisateur["ID_ROLE"];
-        header("Location: index.php?Role=" . $roleID);
+        header("Location: index.php?Role=" . $roleID . "&Page=1");
 
     } else {
         echo "Identifiant ou mot de passe incorrect.";
