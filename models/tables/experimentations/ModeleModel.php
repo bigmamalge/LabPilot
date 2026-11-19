@@ -23,7 +23,8 @@ class ModeleModel extends Model
     {
         $pdo = $this->getPDO();
         $stmt = $pdo->query('SELECT modele.ID_MODELE, modele.NOM_MODELE, modele.DESC_MODELE,
-                                    COUNT(experimentation.ID_EXP) AS nbUtilisations
+                                    COUNT(experimentation.ID_EXP) AS nbUtilisations,
+                                    DATE_FORMAT(MAX(experimentation.DATE_DEB_EXP), "%d/%m/%Y") AS DERNIERE_UTILISATION
                              FROM modele
                              LEFT JOIN experimentation ON experimentation.ID_MODELE = modele.ID_MODELE
                              GROUP BY modele.ID_MODELE, modele.NOM_MODELE, modele.DESC_MODELE

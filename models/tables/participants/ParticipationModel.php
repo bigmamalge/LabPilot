@@ -131,5 +131,67 @@ class ParticipationModel extends Model
         $stmt->execute(['id' => $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getParticipationsParticipantByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT p.*,
+                                      CASE
+                                          WHEN p.STATUT_INSC = "Refuse" THEN "annulees"
+                                          WHEN p.A_VENIR = 1 THEN "avenir"
+                                          WHEN p.STATUT_INSC = "Accepte" AND p.PRESENCE_PAR <> "Absent" THEN "terminees"
+                                          ELSE "annulees"
+                                      END AS STATUT,
+                                      CASE
+                                          WHEN p.STATUT_INSC = "Refuse" THEN "Refusée"
+                                          WHEN p.A_VENIR = 1 AND p.STATUT_INSC = "En attente" THEN "En attente"
+                                          WHEN p.A_VENIR = 1 THEN "Confirmée"
+                                          WHEN p.STATUT_INSC = "Accepte" AND p.PRESENCE_PAR = "Absent" THEN "Absence"
+                                          WHEN p.STATUT_INSC = "Accepte" THEN "Terminée"
+                                          ELSE "Expirée"
+                                      END AS LIBELLE_STATUT,
+                                      CASE
+                                          WHEN p.STATUT_INSC = "Refuse" THEN "ko"
+                                          WHEN p.A_VENIR = 1 AND p.STATUT_INSC = "En attente" THEN "warn"
+                                          WHEN p.A_VENIR = 1 THEN "info"
+                                          WHEN p.STATUT_INSC = "Accepte" AND p.PRESENCE_PAR = "Absent" THEN "ko"
+                                          WHEN p.STATUT_INSC = "Accepte" THEN "ok"
+                                          ELSE "ko"
+                                      END AS CLASSE_STATUT
+                                FROM (
+                                    SELECT participation.ID_CREN, participation.STATUT_INSC, participation.PRESENCE_PAR, participation.RETRIB_ENV,
+                                           experimentation.ID_EXP, experimentation.TITRE_EXP,
+                                           creneau.DATE_CREN, creneau.HEURE_CREN,
+                                           TIMESTAMP(creneau.DATE_CREN, creneau.HEURE_CREN) >= NOW() AS A_VENIR,
+                                           DATE_FORMAT(creneau.DATE_CREN, "%Y-%m") = DATE_FORMAT(CURDATE(), "%Y-%m") AS CE_MOIS,
+                                           DATE_FORMAT(creneau.DATE_CREN, "%d") AS JOUR,
+                                           ELT(MONTH(creneau.DATE_CREN), "janv.", "févr.", "mars", "avr.", "mai", "juin",
+                                               "juil.", "août", "sept.", "oct.", "nov.", "déc.") AS MOIS,
+                                           ELT(DAYOFWEEK(creneau.DATE_CREN), "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi") AS JOUR_SEMAINE,
+                                           CONCAT(DATE_FORMAT(creneau.HEURE_CREN, "%Hh%i"), "-",
+                                                  DATE_FORMAT(ADDTIME(creneau.HEURE_CREN, SEC_TO_TIME(creneau.DUREE_CREN * 60)), "%Hh%i")) AS HORAIRE,
+                                           CONCAT(ELT(DAYOFWEEK(creneau.DATE_CREN), "Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."),
+                                                  " ", DATE_FORMAT(creneau.DATE_CREN, "%d/%m"), " - ", DATE_FORMAT(creneau.HEURE_CREN, "%Hh%i")) AS CRENEAU_COURT,
+                                           DATE_FORMAT(creneau.DATE_CREN, "%d/%m/%Y") AS DATE_CRENEAU,
+                                           retribution.VAL_RETRIB,
+                                           CONCAT(retribution.TYPE_RETRIB, " ", REPLACE(FORMAT(retribution.VAL_RETRIB, 2, "fr_FR"), ",00", ""), " €") AS RETRIBUTION,
+                                           (SELECT ressource_labo.NOM_RESS_LABO
+                                              FROM reservation
+                                              INNER JOIN ressource_labo ON ressource_labo.ID_RESS_LABO = reservation.ID_RESS_LABO
+                                             WHERE reservation.ID_CREN = creneau.ID_CREN AND ressource_labo.TYPE_RESS_LABO = "Salle"
+                                             LIMIT 1) AS SALLE
+                                    FROM participant
+                                    INNER JOIN participation ON participation.ID_PAR = participant.ID_PAR
+                                    INNER JOIN creneau ON creneau.ID_CREN = participation.ID_CREN
+                                    INNER JOIN experimentation ON experimentation.ID_EXP = creneau.ID_EXP
+                                    LEFT JOIN retribution ON retribution.ID_RETRIB = experimentation.ID_RETRIB
+                                    WHERE participant.ID_USER = :id
+                                ) AS p
+                                ORDER BY p.A_VENIR DESC,
+                                         IF(p.A_VENIR = 1, TIMESTAMP(p.DATE_CREN, p.HEURE_CREN), NULL) ASC,
+                                         p.DATE_CREN DESC, p.HEURE_CREN DESC');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

@@ -11,6 +11,22 @@ class UtilisateurModel extends Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getUtilisateursAvecRole(): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->query('SELECT utilisateur.ID_USER, utilisateur.NOM_USER, utilisateur.PRENOM_USER, utilisateur.MAIL_USER,
+                                    utilisateur.IDENT_SSO, role.LIB_ROLE,
+                                    (SELECT CONCAT(DATE_FORMAT(journal.DATE_ACT_JOURN, "%d/%m/%Y"), " ", DATE_FORMAT(journal.HEURE_ACT_JOURN, "%Hh%i"))
+                                       FROM journal
+                                      WHERE journal.ID_USER = utilisateur.ID_USER
+                                      ORDER BY journal.DATE_ACT_JOURN DESC, journal.HEURE_ACT_JOURN DESC
+                                      LIMIT 1) AS DERNIERE_ACTIVITE
+                             FROM utilisateur
+                             INNER JOIN role ON role.ID_ROLE = utilisateur.ID_ROLE
+                             ORDER BY utilisateur.ID_ROLE, utilisateur.NOM_USER, utilisateur.PRENOM_USER');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getUtilisateurById(int $id): ?array
     {
         $pdo = $this->getPDO();

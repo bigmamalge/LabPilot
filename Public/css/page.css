@@ -24,7 +24,7 @@ h3.h-sm { margin: 24px 0 14px; font-size: 16px; font-weight: 600; }
 .input.area textarea { width: 100%; border: 0; padding: 14px; font: inherit; font-weight: 400; color: var(--text); background: transparent; resize: vertical; outline: none; }
 .select select {
   appearance: none; -webkit-appearance: none; width: 100%; height: 100%; border: 0; padding: 0 40px 0 14px;
-  background: url("assets/plan_ChevronDown.svg") no-repeat right 14px center; font: inherit; font-weight: 400; color: var(--text); outline: none; cursor: pointer;
+  background: url("../assets/Common/plan_ChevronDown.svg") no-repeat right 14px center; font: inherit; font-weight: 400; color: var(--text); outline: none; cursor: pointer;
 }
 .select.sm { margin: 0; height: 34px; width: 255px; }
 .select.sm select { font-size: 13px; padding-left: 12px; }
@@ -322,7 +322,7 @@ table.plain td b { color: var(--text); }
 :root[data-theme="Sombre"] img[src$="/Notifications.svg"] { filter: invert(1) hue-rotate(180deg); }
 :root[data-theme="Sombre"] img[src$="/CercleIcone.svg"],
 :root[data-theme="Sombre"] img[src$="/IconeValidation.svg"] { filter: brightness(1.9); }
-:root[data-theme="Sombre"] .select select { background-image: url("assets/plan_ChevronDownLight.svg"); }
+:root[data-theme="Sombre"] .select select { background-image: url("../assets/Common/plan_ChevronDownLight.svg"); }
 :root[data-theme="Sombre"] .av.violet,
 :root[data-theme="Sombre"] .tag.violet,
 :root[data-theme="Sombre"] .stat .ico.violet-bg { background: #33296a; color: #b9a4f5; }

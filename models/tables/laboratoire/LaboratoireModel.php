@@ -18,5 +18,13 @@ class LaboratoireModel extends Model
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
+
+    public function getLaboratoireByUserID(int $id): ?array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT * FROM laboratoire WHERE ID_DIR = :id LIMIT 1');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
 }
 

@@ -37,5 +37,19 @@ class NotificationModel extends Model
         $stmt->execute(['id' => $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getNotificationsByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT notification.ID_NOTIF, notification.TYPE_NOTIF, notification.OBJET_NOTIF, notification.MSG_NOTIF,
+                                      notification.LU_NOTIF, experimentation.TITRE_EXP,
+                                      DATE_FORMAT(notification.DATE_NOTIF, "%d/%m/%Y") AS DATE_NOTIF_FR
+                                FROM notification
+                                LEFT JOIN experimentation ON experimentation.ID_EXP = notification.ID_EXP
+                                WHERE notification.ID_USER = :id
+                                ORDER BY notification.DATE_NOTIF DESC, notification.HEURE_NOTIF DESC');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

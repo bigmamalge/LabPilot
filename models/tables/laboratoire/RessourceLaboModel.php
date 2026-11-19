@@ -58,5 +58,49 @@ class RessourceLaboModel extends Model
         $stmt->execute(['id' => $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getRessourcesLaboratoireByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT r.*,
+                                      IF(r.nbCreneauxMois > 0, ROUND(r.nbReservationsMois * 100 / r.nbCreneauxMois), 0) AS TAUX,
+                                      CASE
+                                          WHEN r.ETAT_RESS_LABO <> "Disponible" THEN r.ETAT_RESS_LABO
+                                          WHEN r.nbReservationsAujourdhui > 0 THEN "Réservée aujourd\'hui"
+                                          ELSE "Disponible"
+                                      END AS LIBELLE_ETAT,
+                                      CASE
+                                          WHEN r.ETAT_RESS_LABO <> "Disponible" THEN "ko"
+                                          WHEN r.nbReservationsAujourdhui > 0 THEN "warn"
+                                          ELSE "ok"
+                                      END AS CLASSE_ETAT
+                                FROM (
+                                    SELECT ressource_labo.ID_RESS_LABO, ressource_labo.NOM_RESS_LABO, ressource_labo.TYPE_RESS_LABO,
+                                           ressource_labo.ETAT_RESS_LABO,
+                                           (SELECT COUNT(*) FROM reservation
+                                             INNER JOIN creneau ON creneau.ID_CREN = reservation.ID_CREN
+                                             WHERE reservation.ID_RESS_LABO = ressource_labo.ID_RESS_LABO
+                                               AND creneau.DATE_CREN = CURDATE()) AS nbReservationsAujourdhui,
+                                           (SELECT COUNT(*) FROM reservation
+                                             INNER JOIN creneau ON creneau.ID_CREN = reservation.ID_CREN
+                                             WHERE reservation.ID_RESS_LABO = ressource_labo.ID_RESS_LABO
+                                               AND TIMESTAMP(creneau.DATE_CREN, creneau.HEURE_CREN) >= NOW()) AS nbReservationsAVenir,
+                                           (SELECT COUNT(*) FROM reservation
+                                             INNER JOIN creneau ON creneau.ID_CREN = reservation.ID_CREN
+                                             WHERE reservation.ID_RESS_LABO = ressource_labo.ID_RESS_LABO
+                                               AND DATE_FORMAT(creneau.DATE_CREN, "%Y-%m") = DATE_FORMAT(CURDATE(), "%Y-%m")) AS nbReservationsMois,
+                                           (SELECT COUNT(*) FROM creneau
+                                             INNER JOIN experimentation ON experimentation.ID_EXP = creneau.ID_EXP
+                                             INNER JOIN equipe ON equipe.ID_EQUIPE = experimentation.ID_EQUIPE
+                                             WHERE equipe.ID_LABO = laboratoire.ID_LABO
+                                               AND DATE_FORMAT(creneau.DATE_CREN, "%Y-%m") = DATE_FORMAT(CURDATE(), "%Y-%m")) AS nbCreneauxMois
+                                    FROM laboratoire
+                                    INNER JOIN ressource_labo ON ressource_labo.ID_LABO = laboratoire.ID_LABO
+                                    WHERE laboratoire.ID_DIR = :id
+                                ) AS r
+                                ORDER BY FIELD(r.TYPE_RESS_LABO, "Salle", "Equipement", "Materiel"), r.NOM_RESS_LABO');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

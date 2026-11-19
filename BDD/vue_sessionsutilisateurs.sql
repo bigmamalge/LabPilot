@@ -1,4 +1,3 @@
--- Vue utilisée par Paramètres > Sécurité (sessions récentes).
 CREATE VIEW sessionsutilisateurs AS
 SELECT ID_USER, DATE_ACT_JOURN, HEURE_ACT_JOURN, HEURE_FIN_JOURN, IP_ACT,
        TIMESTAMPDIFF(MINUTE, HEURE_ACT_JOURN, HEURE_FIN_JOURN) AS DUREE_MINUTES

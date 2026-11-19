@@ -146,5 +146,129 @@ class CreneauModel extends Model
         $stmt->execute(['id' => $id, 'id2' => $id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getCreneauxSemaineEquipeByUserID(int $id, int $decalage): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT c.*,
+                                      CASE
+                                          WHEN c.STATUT_CREN = "Propose" THEN "red"
+                                          WHEN c.nbInscrits >= c.NB_MAX_PAR THEN "green"
+                                          ELSE ""
+                                      END AS CLASSE
+                                FROM (
+                                    SELECT creneau.ID_CREN, creneau.DATE_CREN, creneau.HEURE_CREN, creneau.STATUT_CREN, creneau.NB_MAX_PAR,
+                                           experimentation.TITRE_EXP, equipe.NOM_EQUIPE,
+                                           CONCAT(DATE_FORMAT(creneau.HEURE_CREN, "%kh%i"), "-",
+                                                  DATE_FORMAT(ADDTIME(creneau.HEURE_CREN, SEC_TO_TIME(creneau.DUREE_CREN * 60)), "%kh%i")) AS HORAIRE,
+                                           (SELECT COUNT(*) FROM participation
+                                             WHERE participation.ID_CREN = creneau.ID_CREN AND participation.STATUT_INSC = "Accepte") AS nbInscrits,
+                                           (SELECT ressource_labo.NOM_RESS_LABO
+                                              FROM reservation
+                                              INNER JOIN ressource_labo ON ressource_labo.ID_RESS_LABO = reservation.ID_RESS_LABO
+                                             WHERE reservation.ID_CREN = creneau.ID_CREN AND ressource_labo.TYPE_RESS_LABO = "Salle"
+                                             LIMIT 1) AS SALLE
+                                    FROM equipe
+                                    INNER JOIN experimentation ON experimentation.ID_EQUIPE = equipe.ID_EQUIPE
+                                    INNER JOIN creneau ON creneau.ID_EXP = experimentation.ID_EXP
+                                    WHERE equipe.ID_RESP = :id
+                                      AND creneau.DATE_CREN BETWEEN CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY + INTERVAL (:decalage * 7) DAY
+                                                                AND CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY + INTERVAL (:decalage2 * 7 + 4) DAY
+                                ) AS c
+                                ORDER BY c.DATE_CREN, c.HEURE_CREN');
+        $stmt->execute(['id' => $id, 'decalage' => $decalage, 'decalage2' => $decalage]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCreneauxSemaineLaboratoireByUserID(int $id, int $decalage, int $idEquipe): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT c.*,
+                                      CASE
+                                          WHEN c.STATUT_CREN = "Propose" THEN "red"
+                                          WHEN c.nbInscrits >= c.NB_MAX_PAR THEN "green"
+                                          ELSE ""
+                                      END AS CLASSE
+                                FROM (
+                                    SELECT creneau.ID_CREN, creneau.DATE_CREN, creneau.HEURE_CREN, creneau.STATUT_CREN, creneau.NB_MAX_PAR,
+                                           experimentation.TITRE_EXP, equipe.NOM_EQUIPE,
+                                           CONCAT(DATE_FORMAT(creneau.HEURE_CREN, "%kh%i"), "-",
+                                                  DATE_FORMAT(ADDTIME(creneau.HEURE_CREN, SEC_TO_TIME(creneau.DUREE_CREN * 60)), "%kh%i")) AS HORAIRE,
+                                           (SELECT COUNT(*) FROM participation
+                                             WHERE participation.ID_CREN = creneau.ID_CREN AND participation.STATUT_INSC = "Accepte") AS nbInscrits,
+                                           (SELECT ressource_labo.NOM_RESS_LABO
+                                              FROM reservation
+                                              INNER JOIN ressource_labo ON ressource_labo.ID_RESS_LABO = reservation.ID_RESS_LABO
+                                             WHERE reservation.ID_CREN = creneau.ID_CREN AND ressource_labo.TYPE_RESS_LABO = "Salle"
+                                             LIMIT 1) AS SALLE
+                                    FROM laboratoire
+                                    INNER JOIN equipe ON equipe.ID_LABO = laboratoire.ID_LABO
+                                    INNER JOIN experimentation ON experimentation.ID_EQUIPE = equipe.ID_EQUIPE
+                                    INNER JOIN creneau ON creneau.ID_EXP = experimentation.ID_EXP
+                                    WHERE laboratoire.ID_DIR = :id
+                                      AND (:idEquipe = 0 OR equipe.ID_EQUIPE = :idEquipe2)
+                                      AND creneau.DATE_CREN BETWEEN CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY + INTERVAL (:decalage * 7) DAY
+                                                                AND CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY + INTERVAL (:decalage2 * 7 + 4) DAY
+                                ) AS c
+                                ORDER BY c.DATE_CREN, c.HEURE_CREN');
+        $stmt->execute(['id' => $id, 'idEquipe' => $idEquipe, 'idEquipe2' => $idEquipe, 'decalage' => $decalage, 'decalage2' => $decalage]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getProchainsCreneauxEquipeByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT creneau.ID_CREN, creneau.NB_MAX_PAR, experimentation.TITRE_EXP,
+                                      DATE_FORMAT(creneau.DATE_CREN, "%d") AS JOUR,
+                                      ELT(MONTH(creneau.DATE_CREN), "janv.", "févr.", "mars", "avr.", "mai", "juin",
+                                          "juil.", "août", "sept.", "oct.", "nov.", "déc.") AS MOIS,
+                                      CONCAT(DATE_FORMAT(creneau.HEURE_CREN, "%Hh%i"), "-",
+                                             DATE_FORMAT(ADDTIME(creneau.HEURE_CREN, SEC_TO_TIME(creneau.DUREE_CREN * 60)), "%Hh%i")) AS HORAIRE,
+                                      (SELECT COUNT(*) FROM participation
+                                        WHERE participation.ID_CREN = creneau.ID_CREN AND participation.STATUT_INSC = "Accepte") AS nbInscrits,
+                                      (SELECT ressource_labo.NOM_RESS_LABO
+                                         FROM reservation
+                                         INNER JOIN ressource_labo ON ressource_labo.ID_RESS_LABO = reservation.ID_RESS_LABO
+                                        WHERE reservation.ID_CREN = creneau.ID_CREN AND ressource_labo.TYPE_RESS_LABO = "Salle"
+                                        LIMIT 1) AS SALLE
+                                FROM equipe
+                                INNER JOIN experimentation ON experimentation.ID_EQUIPE = equipe.ID_EQUIPE
+                                INNER JOIN creneau ON creneau.ID_EXP = experimentation.ID_EXP
+                                WHERE equipe.ID_RESP = :id AND TIMESTAMP(creneau.DATE_CREN, creneau.HEURE_CREN) >= NOW()
+                                ORDER BY creneau.DATE_CREN, creneau.HEURE_CREN');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCreneauxAValiderEquipeByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT creneau.ID_CREN, experimentation.TITRE_EXP, equipe.NOM_EQUIPE,
+                                      DATE_FORMAT(creneau.DATE_CREN, "%d/%m") AS DATE_COURTE,
+                                      DATE_FORMAT(creneau.HEURE_CREN, "%Hh%i") AS HEURE
+                                FROM equipe
+                                INNER JOIN experimentation ON experimentation.ID_EQUIPE = equipe.ID_EQUIPE
+                                INNER JOIN creneau ON creneau.ID_EXP = experimentation.ID_EXP
+                                WHERE equipe.ID_RESP = :id AND creneau.STATUT_CREN = "Propose"
+                                ORDER BY creneau.DATE_CREN, creneau.HEURE_CREN');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCreneauxAValiderLaboratoireByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT creneau.ID_CREN, experimentation.TITRE_EXP, equipe.NOM_EQUIPE,
+                                      DATE_FORMAT(creneau.DATE_CREN, "%d/%m") AS DATE_COURTE,
+                                      DATE_FORMAT(creneau.HEURE_CREN, "%Hh%i") AS HEURE
+                                FROM laboratoire
+                                INNER JOIN equipe ON equipe.ID_LABO = laboratoire.ID_LABO
+                                INNER JOIN experimentation ON experimentation.ID_EQUIPE = equipe.ID_EQUIPE
+                                INNER JOIN creneau ON creneau.ID_EXP = experimentation.ID_EXP
+                                WHERE laboratoire.ID_DIR = :id AND creneau.STATUT_CREN = "Propose"
+                                ORDER BY creneau.DATE_CREN, creneau.HEURE_CREN');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

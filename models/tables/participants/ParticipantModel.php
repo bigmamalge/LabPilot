@@ -33,6 +33,45 @@ class ParticipantModel extends Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getParticipantByUserID(int $id): ?array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT * FROM participant WHERE ID_USER = :id');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
+
+    public function getRepartitionGenreEquipeByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT participant.GEN_PAR, COUNT(DISTINCT participant.ID_PAR) AS nb
+                                FROM equipe
+                                INNER JOIN experimentation ON experimentation.ID_EQUIPE = equipe.ID_EQUIPE
+                                INNER JOIN creneau ON creneau.ID_EXP = experimentation.ID_EXP
+                                INNER JOIN participation ON participation.ID_CREN = creneau.ID_CREN
+                                INNER JOIN participant ON participant.ID_PAR = participation.ID_PAR
+                                WHERE equipe.ID_RESP = :id
+                                GROUP BY participant.GEN_PAR');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getRepartitionGenreLaboratoireByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT participant.GEN_PAR, COUNT(DISTINCT participant.ID_PAR) AS nb
+                                FROM laboratoire
+                                INNER JOIN equipe ON equipe.ID_LABO = laboratoire.ID_LABO
+                                INNER JOIN experimentation ON experimentation.ID_EQUIPE = equipe.ID_EQUIPE
+                                INNER JOIN creneau ON creneau.ID_EXP = experimentation.ID_EXP
+                                INNER JOIN participation ON participation.ID_CREN = creneau.ID_CREN
+                                INNER JOIN participant ON participant.ID_PAR = participation.ID_PAR
+                                WHERE laboratoire.ID_DIR = :id
+                                GROUP BY participant.GEN_PAR');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getRepartitionAgeByUserID(int $id): array
     {
         $pdo = $this->getPDO();
