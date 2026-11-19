@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?php echo strtolower($langue); ?>" data-theme="<?php echo $theme; ?>">
 
 <head>
   <meta charset="utf-8">
@@ -14,7 +14,6 @@
 </head>
 
 <body>
-  <?php require_once __DIR__ . '/themeToggle.php'; ?>
   <div class="layout">
 
     <?php $ThisPage = 1;
@@ -28,7 +27,7 @@
         </label>
         <div class="grow"></div>
         <?php require __DIR__ . "/themeBouton.php"; ?>
-        <button class="lang" type="button">FR - Français <img src="Public/assets/Common/FlecheBas.svg" alt=""></button>
+        <button class="lang" type="button"><?php echo $libelleLangue; ?> <img src="Public/assets/Common/FlecheBas.svg" alt=""></button>
         <button class="icon-btn bell" type="button" aria-label="Notifications"><img
             src="Public/assets/Common/Notifications.svg" alt=""></button>
         <div class="profile">

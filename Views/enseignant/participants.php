@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?php echo strtolower($langue); ?>" data-theme="<?php echo $theme; ?>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="Public/css/page.css?v=<?php echo filemtime(__DIR__ . "/../../Public/css/page.css"); ?>">
 </head>
 <body>
-  <?php require_once __DIR__ . '/themeToggle.php'; ?>
   <div class="layout">
     <?php $ThisPage = 4;
     require_once __DIR__ . '/SideBar.php'; ?>

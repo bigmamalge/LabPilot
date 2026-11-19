@@ -26,6 +26,13 @@ class UtilisateurModel extends Model
         return $stmt->execute(['theme' => $theme, 'id' => $id]);
     }
 
+    public function setLangueUtilisateur(int $id, string $langue): bool
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('UPDATE utilisateur SET LANG_USER = :langue WHERE ID_USER = :id');
+        return $stmt->execute(['langue' => $langue, 'id' => $id]);
+    }
+
     public function getUtilisateurByIdSso(string $idSso): ?array
     {
         $pdo = $this->getPDO();

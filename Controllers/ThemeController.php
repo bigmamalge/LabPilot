@@ -4,13 +4,14 @@ require_once __DIR__ . '/../models/tables/utilisateurs/UtilisateurModel.php';
 
 $themeModel = new UtilisateurModel();
 
-// Enregistrement du thème choisi (index.php?Controlleur=theme), puis retour à la page d'origine
 if (isset($_GET["Controlleur"]) && $_GET["Controlleur"] === "theme") {
-    if (isset($_SESSION["id"]) && isset($_POST["theme"]) && in_array($_POST["theme"], ["Clair", "Sombre"], true)) {
-        $themeModel->setThemeUtilisateur((int) $_SESSION["id"], $_POST["theme"]);
+    if (isset($_POST["theme"]) && in_array($_POST["theme"], ["Clair", "Sombre"], true)) {
+        $themeModel->setThemeUtilisateur($_SESSION["id"], $_POST["theme"]);
+    }
+    if (isset($_POST["langue"]) && in_array($_POST["langue"], ["FR", "EN"], true)) {
+        $themeModel->setLangueUtilisateur($_SESSION["id"], $_POST["langue"]);
     }
 
-    // Uniquement une URL interne de l'application
     $retour = $_POST["retour"] ?? "";
     if (!preg_match('/^index\.php\?[A-Za-z0-9=&_%.-]*$/', $retour)) {
         $retour = "index.php";
@@ -19,7 +20,10 @@ if (isset($_GET["Controlleur"]) && $_GET["Controlleur"] === "theme") {
     exit;
 }
 
-// Thème de l'utilisateur connecté, utilisé par toutes les vues
-$themeUser = $themeModel->getUtilisateurById((int) $_SESSION["id"]);
-$themeSombreGlobal = $themeUser !== null && $themeUser["THEME_USER"] === "Sombre";
+$themeUser = $themeModel->getUtilisateurById($_SESSION["id"]);
+
+$theme = $themeUser["THEME_USER"] ?? "Clair";
+$themeInverse = $theme === "Sombre" ? "Clair" : "Sombre";
+$langue = $themeUser["LANG_USER"] ?? "FR";
+$libelleLangue = $langue === "EN" ? "EN - English" : "FR - Français";
 $themeRetour = "index.php?" . ($_SERVER["QUERY_STRING"] ?? "");

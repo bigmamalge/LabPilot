@@ -53,9 +53,8 @@ $fonction = $poste . " (LIUM)";
 $espace = "espace " . $poste;
 $email = $user["MAIL_USER"];
 
-$langueUtilisateur = $user["LANG_USER"];
-$themeSombre = $user["THEME_USER"] === 'Sombre';
 $consentement = (bool) $user["CONSENT_USER"];
+$anonyme = (bool) $user["ANONYME_USER"];
 
 $idLaboUtilisateur = $equipeUtilisateur['ID_LABO'] ?? null;
 $idEquipeUtilisateur = $equipeUtilisateur['ID_EQUIPE'] ?? null;

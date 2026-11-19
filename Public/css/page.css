@@ -278,8 +278,8 @@ table.plain td b { color: var(--text); }
 .save-row .btn-lg { flex: none; height: 46px; font-size: 15px; }
 .save-row a { font-weight: 600; font-size: 15px; text-decoration: none; }
 
-:root:has(#theme-toggle:checked) .input, :root:has(#theme-toggle:checked) .select, :root:has(#theme-toggle:checked) .btn-lg, :root:has(#theme-toggle:checked) .mini,
-:root:has(#theme-toggle:checked) .quick, :root:has(#theme-toggle:checked) .rnd, :root:has(#theme-toggle:checked) .circle, :root:has(#theme-toggle:checked) .seg button { background: var(--surface); }
+:root[data-theme="Sombre"] .input, :root[data-theme="Sombre"] .select, :root[data-theme="Sombre"] .btn-lg, :root[data-theme="Sombre"] .mini,
+:root[data-theme="Sombre"] .quick, :root[data-theme="Sombre"] .rnd, :root[data-theme="Sombre"] .circle, :root[data-theme="Sombre"] .seg button { background: var(--surface); }
 
 @media (max-width: 1700px) {
   .exp-cols, .plan-cols, .com-cols, .stat-cols { grid-template-columns: 1fr 440px; }
@@ -293,45 +293,45 @@ table.plain td b { color: var(--text); }
   table.data { display: block; overflow-x: auto; }
 }
 
-:root:has(#theme-toggle:checked) img[src$="/Statistiques3.svg"],
-:root:has(#theme-toggle:checked) img[src$="/RessourcesDocuments2.svg"],
-:root:has(#theme-toggle:checked) img[src$="/exp_IconeDocument.svg"],
-:root:has(#theme-toggle:checked) img[src$="/exp_RessourcesDocuments1.svg"],
-:root:has(#theme-toggle:checked) img[src$="/plan_ChevronRight.svg"],
-:root:has(#theme-toggle:checked) img[src$="/plan_ChevronDown.svg"],
-:root:has(#theme-toggle:checked) img[src$="/plan_Groupe.svg"],
-:root:has(#theme-toggle:checked) img[src$="/plan_Clock.svg"],
-:root:has(#theme-toggle:checked) img[src$="/part_Eye.svg"],
-:root:has(#theme-toggle:checked) img[src$="/res_Eye.svg"],
-:root:has(#theme-toggle:checked) img[src$="/res_Download.svg"],
-:root:has(#theme-toggle:checked) img[src$="/part_Doc.svg"],
-:root:has(#theme-toggle:checked) img[src$="/RechercheIco.svg"],
-:root:has(#theme-toggle:checked) img[src$="/part_Search.svg"],
-:root:has(#theme-toggle:checked) img[src$="/res_Search.svg"],
-:root:has(#theme-toggle:checked) img[src$="/FlecheBas.svg"],
-:root:has(#theme-toggle:checked) img[src$="/stat_BiPeople.svg"],
-:root:has(#theme-toggle:checked) img[src$="/res_Pin.svg"],
-:root:has(#theme-toggle:checked) img[src$="/stat_ChevronDown.svg"],
-:root:has(#theme-toggle:checked) img[src$="/stat_ChevronDown1.svg"] { filter: brightness(0) invert(1); }
-:root:has(#theme-toggle:checked) img[src$="/BoutonActionLigne1.svg"],
-:root:has(#theme-toggle:checked) img[src$="/BoutonActionInscription1.svg"],
-:root:has(#theme-toggle:checked) img[src$="/Groupe.svg"],
-:root:has(#theme-toggle:checked) img[src$="/Groupe1.svg"],
-:root:has(#theme-toggle:checked) img[src$="/part_Accept.svg"],
-:root:has(#theme-toggle:checked) img[src$="/part_Refuse.svg"],
-:root:has(#theme-toggle:checked) img[src$="/Notifications.svg"] { filter: invert(1) hue-rotate(180deg); }
-:root:has(#theme-toggle:checked) img[src$="/CercleIcone.svg"],
-:root:has(#theme-toggle:checked) img[src$="/IconeValidation.svg"] { filter: brightness(1.9); }
-:root:has(#theme-toggle:checked) .select select { background-image: url("assets/plan_ChevronDownLight.svg"); }
-:root:has(#theme-toggle:checked) .av.violet,
-:root:has(#theme-toggle:checked) .tag.violet,
-:root:has(#theme-toggle:checked) .stat .ico.violet-bg { background: #33296a; color: #b9a4f5; }
+:root[data-theme="Sombre"] img[src$="/Statistiques3.svg"],
+:root[data-theme="Sombre"] img[src$="/RessourcesDocuments2.svg"],
+:root[data-theme="Sombre"] img[src$="/exp_IconeDocument.svg"],
+:root[data-theme="Sombre"] img[src$="/exp_RessourcesDocuments1.svg"],
+:root[data-theme="Sombre"] img[src$="/plan_ChevronRight.svg"],
+:root[data-theme="Sombre"] img[src$="/plan_ChevronDown.svg"],
+:root[data-theme="Sombre"] img[src$="/plan_Groupe.svg"],
+:root[data-theme="Sombre"] img[src$="/plan_Clock.svg"],
+:root[data-theme="Sombre"] img[src$="/part_Eye.svg"],
+:root[data-theme="Sombre"] img[src$="/res_Eye.svg"],
+:root[data-theme="Sombre"] img[src$="/res_Download.svg"],
+:root[data-theme="Sombre"] img[src$="/part_Doc.svg"],
+:root[data-theme="Sombre"] img[src$="/RechercheIco.svg"],
+:root[data-theme="Sombre"] img[src$="/part_Search.svg"],
+:root[data-theme="Sombre"] img[src$="/res_Search.svg"],
+:root[data-theme="Sombre"] img[src$="/FlecheBas.svg"],
+:root[data-theme="Sombre"] img[src$="/stat_BiPeople.svg"],
+:root[data-theme="Sombre"] img[src$="/res_Pin.svg"],
+:root[data-theme="Sombre"] img[src$="/stat_ChevronDown.svg"],
+:root[data-theme="Sombre"] img[src$="/stat_ChevronDown1.svg"] { filter: brightness(0) invert(1); }
+:root[data-theme="Sombre"] img[src$="/BoutonActionLigne1.svg"],
+:root[data-theme="Sombre"] img[src$="/BoutonActionInscription1.svg"],
+:root[data-theme="Sombre"] img[src$="/Groupe.svg"],
+:root[data-theme="Sombre"] img[src$="/Groupe1.svg"],
+:root[data-theme="Sombre"] img[src$="/part_Accept.svg"],
+:root[data-theme="Sombre"] img[src$="/part_Refuse.svg"],
+:root[data-theme="Sombre"] img[src$="/Notifications.svg"] { filter: invert(1) hue-rotate(180deg); }
+:root[data-theme="Sombre"] img[src$="/CercleIcone.svg"],
+:root[data-theme="Sombre"] img[src$="/IconeValidation.svg"] { filter: brightness(1.9); }
+:root[data-theme="Sombre"] .select select { background-image: url("assets/plan_ChevronDownLight.svg"); }
+:root[data-theme="Sombre"] .av.violet,
+:root[data-theme="Sombre"] .tag.violet,
+:root[data-theme="Sombre"] .stat .ico.violet-bg { background: #33296a; color: #b9a4f5; }
 
 .chart-grid { stroke: var(--border); }
 .chart-dot { fill: var(--surface); }
 .chart-lab { fill: var(--text-secondary); }
 
-:root:has(#theme-toggle:checked) img[src$="/Groupe.svg"],
-:root:has(#theme-toggle:checked) img[src$="/Groupe1.svg"],
-:root:has(#theme-toggle:checked) img[src$="/part_Accept.svg"],
-:root:has(#theme-toggle:checked) img[src$="/part_Refuse.svg"] { filter: invert(1) hue-rotate(180deg) brightness(1.5) saturate(1.6); }
+:root[data-theme="Sombre"] img[src$="/Groupe.svg"],
+:root[data-theme="Sombre"] img[src$="/Groupe1.svg"],
+:root[data-theme="Sombre"] img[src$="/part_Accept.svg"],
+:root[data-theme="Sombre"] img[src$="/part_Refuse.svg"] { filter: invert(1) hue-rotate(180deg) brightness(1.5) saturate(1.6); }

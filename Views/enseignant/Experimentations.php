@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="<?php echo strtolower($langue); ?>" data-theme="<?php echo $theme; ?>">
 
 <head>
   <meta charset="utf-8">
@@ -14,7 +14,6 @@
 </head>
 
 <body>
-  <?php require_once __DIR__ . '/themeToggle.php'; ?>
   <div class="layout">
 
     <?php $ThisPage = 2;
