@@ -44,49 +44,7 @@ $nom_complet = $prenom . " " . $nom;
 $initiales = $prenom[0] . $nom[0];
 $poste = $roleUser[0]['LIB_ROLE'];
 
-foreach ($experimentations as $i => $exp) {
-    if ($exp['ARCHIVE_EXP']) {
-        $statut = 'archived';
-        $libelleStatut = 'Archivée';
-        $classeStatut = '';
-    } elseif ($exp['EST_TERMINEE']) {
-        $statut = 'done';
-        $libelleStatut = 'Terminée';
-        $classeStatut = 'ok';
-    } elseif ($exp['nbCreneaux'] == 0) {
-        $statut = 'draft';
-        $libelleStatut = 'Brouillon';
-        $classeStatut = '';
-    } elseif ($exp['nbCreneauxProposes'] > 0) {
-        $statut = 'run';
-        $libelleStatut = 'Créneaux à valider';
-        $classeStatut = 'warn';
-    } else {
-        $statut = 'run';
-        $libelleStatut = 'En cours';
-        $classeStatut = 'run';
-    }
-
-    if ($exp['JOUR_HEURE_CREN'] !== null) {
-        $prochainCreneau = $exp['JOUR_HEURE_CREN'];
-        if ($exp['SALLE'] !== null) {
-            $prochainCreneau .= ' (' . $exp['SALLE'] . ')';
-        }
-    } elseif ($statut === 'draft') {
-        $prochainCreneau = 'Non planifié';
-    } else {
-        $prochainCreneau = 'Aucun créneau à venir';
-    }
-
-    $experimentations[$i]['statut'] = $statut;
-    $experimentations[$i]['libelleStatut'] = $libelleStatut;
-    $experimentations[$i]['classeStatut'] = $classeStatut;
-    $experimentations[$i]['pourcent'] = $exp['nbMaxPar'] > 0 ? round($exp['nbpart'] / $exp['nbMaxPar'] * 100) : 0;
-    $experimentations[$i]['prochainCreneau'] = $prochainCreneau;
-}
-
-
-$nbExperimentationsActives = count(array_filter($experimentations, fn($exp) => $exp['statut'] === 'run'));
+$nbExperimentationsActives = count(array_filter($experimentations, fn($exp) => $exp['STATUT'] === 'run'));
 $nbNouvellesCeMois = count(array_filter($experimentations, fn($exp) => $exp['COMMENCEE_CE_MOIS'] == 1));
 
 $nbInscriptionsEnAttente = count($inscriptionsEnAttente);

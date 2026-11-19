@@ -1,13 +1,3 @@
-<?php
-  $espace = "Espace enseignant-chercheur";
-  $prenom = "John";
-  $nom = "Doeuf";
-  $nom_complet = $prenom . " " . $nom;
-  $initiales = "JD";
-  $fonction = "Enseignant-chercheur (LIUM)";
-  $email = "john.doeuf@univ-lemans.fr";
-  $poste = "Enseignant-chercheur";
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,11 +34,15 @@
             <h2 class="big sm">Nouvelle communication</h2>
             <p class="sub rule">Envoi à sens unique - les participants reçoivent l'information, sans espace de réponse dans l'application.</p>
             <form class="form comm" onsubmit="return false">
-              <label>Expérimentation concernée<span class="select"><select><option>Étude mémoire visuelle</option></select></span></label>
+              <label>Expérimentation concernée<span class="select"><select><?php
+                foreach ($experimentations as $exp) {
+                  echo '<option>' . htmlspecialchars($exp['TITRE_EXP']) . '</option>';
+                }
+                ?></select></span></label>
               <fieldset>
                 <legend>Destinataires</legend>
-                <label class="opt"><input type="radio" name="dest" checked> Tous les participants inscrits <em>18</em></label>
-                <label class="opt"><input type="radio" name="dest"> Participants en attente de validation <em class="warn">9</em></label>
+                <label class="opt"><input type="radio" name="dest" checked> Tous les participants inscrits <em><?php echo $nbInscrits; ?></em></label>
+                <label class="opt"><input type="radio" name="dest"> Participants en attente de validation <em class="warn"><?php echo $nbEnAttente; ?></em></label>
                 <label class="opt"><input type="radio" name="dest"> Sélection manuelle</label>
               </fieldset>
               <fieldset>
@@ -61,7 +55,7 @@
               <label>Objet<span class="input"><input placeholder="Ex. : Rappel de votre créneau du 24 septembre"></span></label>
               <label>Message<span class="input area"><textarea rows="4" placeholder="Rédigez votre message aux participants..."></textarea></span></label>
               <div class="send-row">
-                <p>Ce message sera envoyé à <b>18 participants.</b></p>
+                <p>Ce message sera envoyé à <b><?php echo $nbInscrits; ?> participant<?php echo $nbInscrits > 1 ? 's' : ''; ?>.</b></p>
                 <button class="btn-lg" type="button">Enregistrer en brouillon</button>
                 <button class="btn-lg primary send" type="submit"><img src="Public/assets/Enseignant/com_SendIcon.svg" alt="">Envoyer</button>
               </div>
@@ -73,9 +67,14 @@
             <section class="card pad lg">
               <div class="exp-top hist"><h2 class="big sm">Historique des envois</h2><span class="info-t">Communications déjà envoyées</span></div>
               <div class="hist">
-              <div class="h-item"><div class="dchip"><b>21</b><small>sept.</small></div><div><b>Rappel de créneau - Étude mémoire visuelle</b><span>Envoyé à 8 participants · Notification + e-mail</span></div></div>
-              <div class="h-item"><div class="dchip"><b>18</b><small>sept.</small></div><div><b>Confirmation d'inscription - Questionnaire post-test</b><span>Envoyé à 11 participants · Notification</span></div></div>
-              <div class="h-item"><div class="dchip"><b>12</b><small>sept.</small></div><div><b>Annulation de session - Perception sonore</b><span>Envoyé à 6 participants · Notification + e-mail</span></div></div>
+              <?php
+              if (count($historique) === 0) {
+                echo '<p class="sub">Aucune communication envoyée.</p>';
+              }
+              foreach ($historique as $envoi) {
+                echo '<div class="h-item"><div class="dchip"><b>' . $envoi['JOUR'] . '</b><small>' . $envoi['MOIS'] . '</small></div><div><b>' . htmlspecialchars($envoi['OBJET_NOTIF'] . ' - ' . $envoi['TITRE_EXP']) . '</b><span>Envoyé à ' . $envoi['nbDestinataires'] . ' participant' . ($envoi['nbDestinataires'] > 1 ? 's' : '') . ' · Notification</span></div></div>';
+              }
+              ?>
               </div>
             </section>
           </div>

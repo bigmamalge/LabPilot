@@ -1,12 +1,3 @@
-<?php
-$prenom = "John";
-$nom = "Doeuf";
-$nom_complet = $prenom . " " . $nom;
-$initiales = "JD";
-$fonction = "Enseignant-chercheur (LIUM)";
-$email = "john.doeuf@univ-lemans.fr";
-$poste = "Enseignant-chercheur";
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -41,7 +32,7 @@ $poste = "Enseignant-chercheur";
               associées et rétributions.</p>
           </div>
           <div class="actions">
-            <a class="btn" href="ressources.php"><img src="Public/assets/Common/exp_IconeDocument.svg"
+            <a class="btn" href="index.php?Role=1&Page=5"><img src="Public/assets/Common/exp_IconeDocument.svg"
                 alt="">Depuis un modèle</a>
             <a class="btn primary" href="#"><img src="Public/assets/Common/exp_IconeAjouter.svg" alt="">Créer une
               expérimentation</a>
@@ -51,7 +42,7 @@ $poste = "Enseignant-chercheur";
         <div class="cols exp-cols">
           <section class="card pad">
             <h2 class="big">Toutes mes expérimentations</h2>
-            <p class="sub">6 expérimentations</p>
+            <p class="sub"><?php echo count($experimentations); ?> expérimentation<?php echo count($experimentations) > 1 ? 's' : ''; ?></p>
             <div class="tabs flat" role="tablist" data-filters="#exp-list">
               <button role="tab" aria-selected="true" data-filter="all">Toutes</button>
               <button role="tab" aria-selected="false" data-filter="run">En-cours</button>
@@ -60,119 +51,90 @@ $poste = "Enseignant-chercheur";
               <button role="tab" aria-selected="false" data-filter="archived">Archivées</button>
             </div>
             <div class="exp-list" id="exp-list">
-              <article class="exp-card" data-status="run">
+              <?php
+              if (count($experimentations) === 0) {
+                echo '<p class="sub">Aucune expérimentation pour le moment.</p>';
+              }
+              foreach ($experimentations as $exp) {
+                if ($exp['STATUT'] === 'draft') {
+                  $progression = '<div class="progress"><span class="bar sm"><i style="width:0%"></i></span>Aucun créneau planifié</div>';
+                  $boutons = '<a class="mini solid" href="#">Terminer le paramétrage</a><a
+                      class="mini plain danger" href="#">Supprimer</a>';
+                } else {
+                  $progression = '<div class="progress"><span class="bar sm"><i style="width:' . $exp['POURCENT'] . '%"></i></span>' . $exp['POURCENT'] . ' % rempli</div>';
+                  $boutons = '<a class="mini" href="index.php?Role=1&Page=2&Exp=' . $exp['ID_EXP'] . '">Voir le détail</a><a class="mini"
+                      href="index.php?Role=1&Page=3">Planning</a><a class="mini plain" href="#">Modifier</a>';
+                }
+                echo '<article class="exp-card" data-status="' . $exp['STATUT'] . '">
                 <div class="exp-top">
-                  <h3>Étude mémoire visuelle</h3><span class="pill run sm">En cours</span>
+                  <h3>' . htmlspecialchars($exp['TITRE_EXP']) . '</h3><span class="pill ' . $exp['CLASSE_STATUT'] . ' sm">' . $exp['LIBELLE_STATUT'] . '</span>
                 </div>
-                <p class="desc">Impact de la charge cognitive sur la reconnaissance d'images chez l'adulte jeune.</p>
+                <p class="desc">' . htmlspecialchars($exp['DESC_EXP'] ?? '') . '</p>
                 <div class="meta">
-                  <div><span>Période</span><b>03/01/2026 - 15/11/2026</b></div>
-                  <div><span>Participants</span><b>18/24</b></div>
-                  <div><span>Rétribution</span><b>Coupon 10 €</b></div>
-                  <div><span>Ressources</span><b>3 documents</b></div>
+                  <div><span>Période</span><b>' . $exp['PERIODE'] . '</b></div>
+                  <div><span>Participants</span><b>' . $exp['nbpart'] . '/' . $exp['nbMaxPar'] . '</b></div>
+                  <div><span>Rétribution</span><b>' . htmlspecialchars($exp['RETRIBUTION'] ?? 'Aucune') . '</b></div>
+                  <div><span>Ressources</span><b>' . $exp['libelleRessources'] . '</b></div>
                 </div>
                 <div class="exp-foot">
-                  <div class="progress"><span class="bar sm"><i style="width:75%"></i></span>75 % rempli</div>
-                  <div class="foot-btns"><a class="mini" href="#">Voir le détail</a><a class="mini"
-                      href="planning.php">Planning</a><a class="mini plain" href="#">Modifier</a></div>
+                  ' . $progression . '
+                  <div class="foot-btns">' . $boutons . '</div>
                 </div>
-              </article>
-              <article class="exp-card" data-status="run">
-                <div class="exp-top">
-                  <h3>Entretien qualitatif - Lot 2</h3><span class="pill run sm">En cours</span>
-                </div>
-                <p class="desc">Entretiens semi-directifs sur les usages numériques des seniors.</p>
-                <div class="meta">
-                  <div><span>Période</span><b>28/08 - 30/01/2026</b></div>
-                  <div><span>Participants</span><b>8/15</b></div>
-                  <div><span>Rétribution</span><b>Aucune</b></div>
-                  <div><span>Ressources</span><b>2 documents</b></div>
-                </div>
-                <div class="exp-foot">
-                  <div class="progress"><span class="bar sm"><i style="width:53%"></i></span>53 % rempli</div>
-                  <div class="foot-btns"><a class="mini" href="#">Voir le détail</a><a class="mini"
-                      href="planning.php">Planning</a><a class="mini plain" href="#">Modifier</a></div>
-                </div>
-              </article>
-              <article class="exp-card" data-status="draft">
-                <div class="exp-top">
-                  <h3>Test utilisateur - nouvelle IHM</h3><span class="pill sm">Brouillon</span>
-                </div>
-                <p class="desc">Évaluation ergonomique d'un prototype d'interface avant mise en production.</p>
-                <div class="meta">
-                  <div><span>Période</span><b>non planifiée</b></div>
-                  <div><span>Participants</span><b>0/12</b></div>
-                  <div><span>Rétribution</span><b>Crédits recherche</b></div>
-                  <div><span>Ressources</span><b>1 document</b></div>
-                </div>
-                <div class="exp-foot">
-                  <div class="progress"><span class="bar sm"><i style="width:20%"></i></span>Paramétrage à 20 %</div>
-                  <div class="foot-btns"><a class="mini solid" href="#">Terminer le paramétrage</a><a
-                      class="mini plain danger" href="#">Supprimer</a></div>
-                </div>
-              </article>
-              <article class="exp-card" data-status="run">
-                <div class="exp-top">
-                  <h3>Questionnaire post-test</h3><span class="pill warn sm">Créneaux à valider</span>
-                </div>
-                <p class="desc">Recueil des impressions à chaud suite aux sessions de test utilisateur.</p>
-                <div class="meta">
-                  <div><span>Période</span><b>15/09 - 10/10/2026</b></div>
-                  <div><span>Participants</span><b>15/20</b></div>
-                  <div><span>Rétribution</span><b>Aucune</b></div>
-                  <div><span>Ressources</span><b>1 questionnaire</b></div>
-                </div>
-                <div class="exp-foot">
-                  <div class="progress"><span class="bar sm"><i style="width:35%"></i></span>35 % rempli</div>
-                  <div class="foot-btns"><a class="mini" href="#">Voir le détail</a><a class="mini"
-                      href="planning.php">Planning</a><a class="mini plain" href="#">Modifier</a></div>
-                </div>
-              </article>
+              </article>';
+              }
+              ?>
             </div>
           </section>
 
           <div class="stack">
             <section class="card pad">
+              <?php if ($experimentationDetail === null) { ?>
+              <h2 class="big sm">Aucune expérimentation</h2>
+              <p class="sub accent">Créez votre première expérimentation pour voir ses paramètres ici.</p>
+              <?php } else { ?>
               <div class="exp-top">
                 <div>
-                  <h2 class="big sm">Étude mémoire visuelle</h2>
+                  <h2 class="big sm"><?php echo htmlspecialchars($experimentationDetail['TITRE_EXP']); ?></h2>
                   <p class="sub accent">Paramètres de l'expérimentation</p>
-                </div><span class="pill run sm">En cours</span>
+                </div><span class="pill <?php echo $experimentationDetail['CLASSE_STATUT']; ?> sm"><?php echo $experimentationDetail['LIBELLE_STATUT']; ?></span>
               </div>
               <div class="kv">
-                <div><span>Dates</span><b>03/01/2026 - 15/11/2026</b></div>
-                <div><span>Durée par session</span><b>1 h 30</b></div>
-                <div><span>Nombre de sessions</span><b>3 par participant</b></div>
-                <div><span>Rétribution</span><b>Coupon d'achat - 10 €</b></div>
-                <div><span>Restrictions</span><b>18-35 ans, vision normale</b></div>
-                <div><span>Consentement requis</span><b>Oui</b></div>
+                <div><span>Dates</span><b><?php echo $experimentationDetail['PERIODE']; ?></b></div>
+                <div><span>Durée par session</span><b><?php echo $experimentationDetail['DUREE_SESSIONS'] ?? 'Non planifiée'; ?></b></div>
+                <div><span>Nombre de créneaux</span><b><?php echo $experimentationDetail['nbCreneaux']; ?></b></div>
+                <div><span>Rétribution</span><b><?php echo htmlspecialchars($experimentationDetail['RETRIBUTION'] ?? 'Aucune'); ?></b></div>
+                <div><span>Restrictions</span><b><?php echo htmlspecialchars($experimentationDetail['RESTRICTIONS'] ?? 'Aucune'); ?></b></div>
+                <div><span>Validation des inscriptions</span><b><?php echo $experimentationDetail['VALID_INSC_EXP'] ? 'Oui' : 'Non'; ?></b></div>
               </div>
               <h3 class="h-sm">Ressources associées</h3>
               <div class="files">
-                <div class="file"><img src="Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
-                  <div><b>Protocole_experimental.pdf</b><span>Ajouté le 01/01/2026</span></div>
-                </div>
-                <div class="file"><img src="Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
-                  <div><b>Questionnaire_pre-test.docx</b><span>Ajouté le 01/01/2026</span></div>
-                </div>
-                <div class="file"><img src="Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
-                  <div><b>Fiche_de_consentement.pdf</b><span>Ajouté le 01/01/2026</span></div>
-                </div>
+                <?php
+                if (count($ressourcesDetail) === 0) {
+                  echo '<p class="sub">Aucune ressource associée.</p>';
+                }
+                foreach ($ressourcesDetail as $ressource) {
+                  echo '<div class="file"><img src="Public/assets/Common/exp_RessourcesDocuments1.svg" alt="">
+                  <div><b>' . htmlspecialchars($ressource['NOM_RESS']) . '</b><span>' . htmlspecialchars($ressource['TYPE_RESS']) . '</span></div>
+                </div>';
+                }
+                ?>
               </div>
               <div class="btn-row"><a class="btn-lg dark" href="#">Modifier</a><a class="btn-lg" href="#">Archiver</a>
               </div>
+              <?php } ?>
             </section>
             <section class="card pad">
               <h2 class="big sm">Modèles disponibles</h2>
               <div class="models">
-                <div class="model">
-                  <div><b>Protocole mémoire visuelle standard</b><span>Utilisé 4 fois par votre équipe</span></div><a
+                <?php
+                foreach ($modeles as $modele) {
+                  $utilisation = $modele['nbUtilisations'] > 0 ? 'Utilisé ' . $modele['nbUtilisations'] . ' fois' : 'Jamais utilisé';
+                  echo '<div class="model">
+                  <div><b>' . htmlspecialchars($modele['NOM_MODELE']) . '</b><span>' . $utilisation . '</span></div><a
                     class="mini" href="#">Utiliser</a>
-                </div>
-                <div class="model">
-                  <div><b>Entretien qualitatif type</b><span>Trame semi-directive, 45 min</span></div><a class="mini"
-                    href="#">Utiliser</a>
-                </div>
+                </div>';
+                }
+                ?>
               </div>
             </section>
           </div>

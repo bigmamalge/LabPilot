@@ -112,15 +112,15 @@
                   echo '<tr><td colspan="5">Aucune expérimentation pour le moment.</td></tr>';
                 }
                 foreach ($experimentations as $exp) {
-                  $boutonPlanning = $exp['statut'] === 'draft' ? '' : '<button class="ghost" type="button"><img
+                  $boutonPlanning = $exp['STATUT'] === 'draft' ? '' : '<button class="ghost" type="button"><img
                           src="Public/assets/Common/BoutonActionLigne1.svg" alt="Voir le planning"></button>';
-                  echo '<tr data-status="' . $exp['statut'] . '">
+                  echo '<tr data-status="' . $exp['STATUT'] . '">
                   <td class="name"><b>' . htmlspecialchars($exp['TITRE_EXP']) . '</b><small>' . $exp['PERIODE'] . '</small></td>
-                  <td><span class="pill ' . $exp['classeStatut'] . '">' . $exp['libelleStatut'] . '</span></td>
+                  <td><span class="pill ' . $exp['CLASSE_STATUT'] . '">' . $exp['LIBELLE_STATUT'] . '</span></td>
                   <td>
-                    <div class="progress"><span class="bar"><i style="width:' . $exp['pourcent'] . '%"></i></span>' . $exp['nbpart'] . '/' . $exp['nbMaxPar'] . '</div>
+                    <div class="progress"><span class="bar"><i style="width:' . $exp['POURCENT'] . '%"></i></span>' . $exp['nbpart'] . '/' . $exp['nbMaxPar'] . '</div>
                   </td>
-                  <td>' . htmlspecialchars($exp['prochainCreneau']) . '</td>
+                  <td>' . htmlspecialchars($exp['PROCHAIN_CRENEAU']) . '</td>
                   <td>
                     <div class="row-actions">' . $boutonPlanning . '<button
                         class="ghost" type="button"><img src="Public/assets/Common/BoutonActionInscription1.svg"

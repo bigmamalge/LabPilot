@@ -1,13 +1,3 @@
-<?php
-  $espace = "Espace enseignant-chercheur";
-  $prenom = "John";
-  $nom = "Doeuf";
-  $nom_complet = $prenom . " " . $nom;
-  $initiales = "JD";
-  $fonction = "Enseignant-chercheur (LIUM)";
-  $email = "john.doeuf@univ-lemans.fr";
-  $poste = "Enseignant-chercheur";
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,49 +32,70 @@
         <div class="cols plan-cols">
           <section class="card pad">
             <div class="cal-bar">
-              <h2>Semaine du 22 au 26 sept. 2026</h2>
-              <button class="circle" type="button" aria-label="Semaine suivante"><img src="Public/assets/Common/plan_ChevronRight.svg" alt=""></button>
+              <a class="circle" href="index.php?Role=1&Page=3&Semaine=<?php echo $decalageSemaine - 1; ?>" aria-label="Semaine précédente"><img src="Public/assets/Common/plan_ChevronRight.svg" alt="" style="transform:rotate(180deg)"></a>
+              <h2><?php echo $titreSemaine; ?></h2>
+              <a class="circle" href="index.php?Role=1&Page=3&Semaine=<?php echo $decalageSemaine + 1; ?>" aria-label="Semaine suivante"><img src="Public/assets/Common/plan_ChevronRight.svg" alt=""></a>
               <span class="grow"></span>
               <div class="seg" role="tablist"><button role="tab" aria-selected="true" type="button">Semaine</button><button role="tab" aria-selected="false" type="button">Mois</button></div>
-              <label class="select sm"><select aria-label="Filtrer"><option>Toutes les expérimentations</option></select></label>
+              <label class="select sm"><select aria-label="Filtrer"><option>Toutes les expérimentations</option><?php
+                foreach ($experimentations as $exp) {
+                  echo '<option>' . htmlspecialchars($exp['TITRE_EXP']) . '</option>';
+                }
+                ?></select></label>
             </div>
             <ul class="legend"><li><i style="background:var(--text)"></i>Confirmé</li><li><i style="background:var(--primary)"></i>Créneau à valider</li><li><i style="background:var(--succes-text)"></i>Complet</li></ul>
             <div class="week">
-              <div class="day"><div class="dh"><small>LUN</small><b>22</b></div><div class="db"><div class="ev " style="top:12px"><b>Mémoire visuelle - A</b><span>10h00-11h30 - E284</span><span>6/8</span></div></div></div>
-              <div class="day"><div class="dh"><small>MAR</small><b>23</b></div><div class="db"><div class="ev warn" style="top:166px"><b>Entretien Lot 2</b><span>14h00-15h00 - Malle</span><span>1/1</span></div></div></div>
-              <div class="day"><div class="dh"><small>MER</small><span class="today">24</span></div><div class="db"><div class="ev " style="top:12px"><b>Test IHM</b><span>9h30-11h00 - B102</span><span>5/8</span></div><div class="ev ok" style="top:265px"><b>Mémoire visuelle - B</b><span>15h00-16h30 - B284</span><span>8/8</span></div></div></div>
-              <div class="day"><div class="dh"><small>JEU</small><b>25</b></div><div class="db"><div class="ev warn" style="top:65px"><b>Questionnaire post-test</b><span>11h00-12h00 - A102</span><span>4/6</span></div></div></div>
-              <div class="day"><div class="dh"><small>VEN</small><b>26</b></div><div class="db"><div class="ev " style="top:116px"><b>Mémoire visuelle - C</b><span>13h00-14h30 - B284</span><span>1/8</span></div></div></div>
+              <?php
+              foreach ($joursSemaine as $jour) {
+                $numero = $jour['EST_AUJOURDHUI'] ? '<span class="today">' . $jour['NUM_JOUR'] . '</span>' : '<b>' . $jour['NUM_JOUR'] . '</b>';
+                $evenements = '';
+                foreach ($jour['creneaux'] as $creneau) {
+                  $evenements .= '<div class="ev ' . $creneau['CLASSE'] . '" style="top:' . $creneau['POSITION_HAUT'] . 'px"><b>' . htmlspecialchars($creneau['TITRE_EXP']) . '</b><span>' . $creneau['HORAIRE'] . ' - ' . htmlspecialchars($creneau['SALLE'] ?? 'Salle non définie') . '</span><span>' . $creneau['nbInscrits'] . '/' . $creneau['NB_MAX_PAR'] . '</span></div>';
+                }
+                echo '<div class="day"><div class="dh"><small>' . $jour['JOUR_COURT'] . '</small>' . $numero . '</div><div class="db">' . $evenements . '</div></div>';
+              }
+              ?>
             </div>
           </section>
 
           <div class="stack">
             <section class="card pad">
-              <div class="exp-top"><h2 class="big sm">Mercredi 24 septembre</h2><span class="pill sm">2 créneaux</span></div>
-              <article class="slot-card">
-                <div class="st"><b class="hour">9h30</b><div><b>Test utilisateur - nouvelle IHM</b><span>Salle B102 - 5/8 inscrits</span></div></div>
-                <div class="progress sm"><span class="bar"><i style="width:62%;background:var(--text)"></i></span><b>1 place restante</b></div>
-              </article>
-              <article class="slot-card hot">
-                <div class="st"><b class="hour ok">15h00</b><div><b>Étude mémoire visuelle - Session B</b><span>Salle B284 - 8/8 inscrits</span></div></div>
-                <div class="progress sm"><span class="bar"><i style="width:100%;background:var(--succes-text)"></i></span><b class="ok">Complet</b></div>
-              </article>
+              <div class="exp-top"><h2 class="big sm"><?php echo $titreJournee; ?></h2><span class="pill sm"><?php echo $nbCreneauxJournee; ?></span></div>
+              <?php
+              foreach ($prochaineJournee as $creneau) {
+                $couleur = $creneau['COMPLET'] ? 'var(--succes-text)' : 'var(--text)';
+                echo '<article class="slot-card' . ($creneau['COMPLET'] ? ' hot' : '') . '">
+                <div class="st"><b class="hour' . ($creneau['COMPLET'] ? ' ok' : '') . '">' . $creneau['HEURE'] . '</b><div><b>' . htmlspecialchars($creneau['TITRE_EXP']) . '</b><span>' . htmlspecialchars($creneau['SALLE'] ?? 'Salle non définie') . ' - ' . $creneau['nbInscrits'] . '/' . $creneau['NB_MAX_PAR'] . ' inscrits</span></div></div>
+                <div class="progress sm"><span class="bar"><i style="width:' . $creneau['POURCENT'] . '%;background:' . $couleur . '"></i></span><b' . ($creneau['COMPLET'] ? ' class="ok"' : '') . '>' . $creneau['libellePlaces'] . '</b></div>
+              </article>';
+              }
+              ?>
+              <?php if (count($prochaineJournee) > 0) { ?>
               <div class="btn-row"><button class="btn-lg ok-t" type="button">Valider le créneau</button><button class="btn-lg danger-t" type="button">Refuser le créneau</button></div>
+              <?php } ?>
             </section>
 
             <section class="card pad">
               <h2 class="big sm">Nouveau créneau</h2>
               <form class="form" onsubmit="return false">
-                <label>Expérimentation<span class="select"><select><option>Étude mémoire visuelle</option></select></span></label>
+                <label>Expérimentation<span class="select"><select><?php
+                  foreach ($experimentations as $exp) {
+                    echo '<option>' . htmlspecialchars($exp['TITRE_EXP']) . '</option>';
+                  }
+                  ?></select></span></label>
                 <div class="two">
-                  <label>Date<span class="input icon"><input value="26/09/2026"><img src="Public/assets/Common/plan_Groupe.svg" alt=""></span></label>
-                  <label>Heure de début<span class="input icon"><input value="14 : 00"><img src="Public/assets/Common/plan_Clock.svg" alt=""></span></label>
+                  <label>Date<span class="input icon"><input placeholder="jj/mm/aaaa"><img src="Public/assets/Common/plan_Groupe.svg" alt=""></span></label>
+                  <label>Heure de début<span class="input icon"><input placeholder="hh : mm"><img src="Public/assets/Common/plan_Clock.svg" alt=""></span></label>
                 </div>
                 <div class="two">
                   <label>Durée<span class="select"><select><option>1 h 00</option><option>1 h 30</option></select></span></label>
-                  <label>Capacité<span class="input"><input value="8"></span></label>
+                  <label>Capacité<span class="input"><input placeholder="8"></span></label>
                 </div>
-                <label>Salle / lieu<span class="input"><input value="Salle B284 - LIUM"></span></label>
+                <label>Salle / lieu<span class="select"><select><?php
+                  foreach ($salles as $salle) {
+                    echo '<option>' . htmlspecialchars($salle['NOM_RESS_LABO']) . '</option>';
+                  }
+                  ?></select></span></label>
                 <p class="hint">Ressource associée à l'expérimentation</p>
                 <button class="btn-lg primary" type="submit">Ajouter le créneau au planning</button>
               </form>
