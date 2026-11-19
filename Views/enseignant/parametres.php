@@ -7,6 +7,19 @@
   $fonction = "Enseignant-chercheur (LIUM)";
   $email = "john.doeuf@univ-lemans.fr";
   $poste = "Enseignant-chercheur";
+
+  $baseUrl = "index.php?Role=1&amp;Page=8";
+  $sections = [
+    'profil'          => ['label' => 'Profil',                  'icone' => 'par_Trace1.svg', 'fichier' => 'profil.php'],
+    'preferences'     => ['label' => 'Préférences',             'icone' => 'par_Trace2.svg', 'fichier' => 'preferences.php'],
+    'notifications'   => ['label' => 'Notifications',           'icone' => 'par_Trace3.svg', 'fichier' => 'notifications.php'],
+    'securite'        => ['label' => 'Sécurité',                'icone' => 'par_Trace4.svg', 'fichier' => 'securite.php'],
+    'modeles'         => ['label' => 'Mes modèles',             'icone' => 'par_Trace5.svg', 'fichier' => 'modeles.php'],
+    'integrations'    => ['label' => 'Intégrations',            'icone' => 'par_Trace6.svg', 'fichier' => 'integrations.php'],
+    'confidentialite' => ['label' => 'Confidentialité &amp; RGPD',  'icone' => 'par_Trace7.svg', 'fichier' => 'confidentialite.php'],
+  ];
+  $section = $_GET['Section'] ?? 'profil';
+  if (!isset($sections[$section])) { $section = 'profil'; }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,25 +53,13 @@
         </div>
 
         <div class="set-cols">
-          <nav class="card set-nav" aria-label="Paramètres"><a href="#" aria-current="true"><img src="Public/assets/Common/par_Trace1.svg" alt="">Profil</a><a href="#"><img src="Public/assets/Common/par_Trace2.svg" alt="">Préférences</a><a href="#"><img src="Public/assets/Common/par_Trace3.svg" alt="">Notifications</a><a href="#"><img src="Public/assets/Common/par_Trace4.svg" alt="">Sécurité</a><a href="#"><img src="Public/assets/Common/par_Trace5.svg" alt="">Mes modèles</a><a href="#"><img src="Public/assets/Common/par_Trace6.svg" alt="">Intégrations</a><a href="#"><img src="Public/assets/Common/par_Trace7.svg" alt="">Confidentialité &amp; RGPD</a></nav>
+          <nav class="card set-nav" aria-label="Paramètres">
+            <?php foreach ($sections as $cle => $s): ?>
+              <a href="<?php echo $baseUrl; ?>&amp;Section=<?php echo $cle; ?>"<?php echo $cle === $section ? ' aria-current="true"' : ''; ?>><img src="Public/assets/Common/<?php echo $s['icone']; ?>" alt=""><?php echo $s['label']; ?></a>
+            <?php endforeach; ?>
+          </nav>
           <section class="card pad lg set-form">
-            <h2 class="big sm">Profil</h2>
-            <div class="photo"><span class="avatar xl"><?php echo $initiales; ?></span><div><button class="btn-lg sm" type="button">Changer la photo</button><small>JPG ou PNG, 2 Mo maximum.</small></div></div>
-            <form class="form small" onsubmit="return false">
-              <div class="two">
-                <label>Nom complet<span class="input"><input value="<?php echo $nom_complet; ?>"></span></label>
-                <label>Fonction<span class="input muted"><input value="<?php echo $poste; ?>"></span></label>
-              </div>
-              <label>Adresse e-mail<span class="input muted"><input value="<?php echo $email; ?>" readonly></span></label>
-              <p class="hint tight">Gérée par l'authentification unique (SSO) de l'université - non modifiable ici.</p>
-              <div class="two">
-                <label>Laboratoire<span class="select"><select><option>LIUM - Laborat...</option></select></span></label>
-                <label>Équipe de recherche<span class="select"><select><option>IEIAH - Environ...</option></select></span></label>
-              </div>
-              <label>Téléphone (optionnel)<span class="input"><input value="02 43 00 00 00"></span></label>
-              <label>Présentation courte<span class="input area"><textarea rows="3" placeholder="Quelques mots sur vos travaux de recherche..."></textarea></span></label>
-              <div class="save-row"><button class="btn-lg primary" type="submit">Enregistrer les modifications</button><a href="#">Annuler</a></div>
-            </form>
+            <?php require __DIR__ . '/parametres/' . $sections[$section]['fichier']; ?>
           </section>
         </div>
         <div class="footer"><?php echo $espace; ?> - Le Mans Université</div>
