@@ -4,6 +4,9 @@ session_start();
 if (!isset($_SESSION["id"])) {
     require_once __DIR__ . '/Controllers/connection/ssoController.php';
 }
+if (isset($_SESSION["id"])) {
+    require_once __DIR__ . '/Controllers/ThemeController.php';
+}
 if (isset($_GET["Controlleur"])) {
     require_once __DIR__ . '/Controllers/Controller.php';
 }

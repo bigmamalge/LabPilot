@@ -27,8 +27,7 @@
           <input type="search" placeholder="Rechercher une expérimentation..." aria-label="Rechercher">
         </label>
         <div class="grow"></div>
-        <label class="icon-btn" for="theme-toggle" aria-label="Basculer le thème jour/nuit"><img class="moon"
-            src="Public/assets/Common/Trace.svg" alt=""><img class="sun" src="Public/assets/Common/Soleil.svg" alt=""></label>
+        <?php require __DIR__ . "/themeBouton.php"; ?>
         <button class="lang" type="button">FR - Français <img src="Public/assets/Common/FlecheBas.svg" alt=""></button>
         <button class="icon-btn bell" type="button" aria-label="Notifications"><img
             src="Public/assets/Common/Notifications.svg" alt=""></button>
