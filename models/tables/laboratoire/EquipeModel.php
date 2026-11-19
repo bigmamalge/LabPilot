@@ -18,5 +18,21 @@ class EquipeModel extends Model
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
+
+    public function getEquipeByUserID(int $id): ?array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT equipe.ID_EQUIPE, equipe.NOM_EQUIPE, laboratoire.ID_LABO, laboratoire.NOM_LABO, laboratoire.SIGLE_LABO
+                                FROM gestion
+                                INNER JOIN experimentation ON experimentation.ID_EXP = gestion.ID_EXP
+                                INNER JOIN equipe ON equipe.ID_EQUIPE = experimentation.ID_EQUIPE
+                                INNER JOIN laboratoire ON laboratoire.ID_LABO = equipe.ID_LABO
+                                WHERE gestion.ID_USER = :id
+                                GROUP BY equipe.ID_EQUIPE, equipe.NOM_EQUIPE, laboratoire.ID_LABO, laboratoire.NOM_LABO, laboratoire.SIGLE_LABO
+                                ORDER BY COUNT(*) DESC
+                                LIMIT 1');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
+    }
 }
 

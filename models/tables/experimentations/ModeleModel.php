@@ -30,5 +30,20 @@ class ModeleModel extends Model
                              ORDER BY nbUtilisations DESC, modele.NOM_MODELE');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getModelesByUserID(int $id): array
+    {
+        $pdo = $this->getPDO();
+        $stmt = $pdo->prepare('SELECT modele.ID_MODELE, modele.NOM_MODELE, modele.DESC_MODELE,
+                                      COUNT(experimentation.ID_EXP) AS nbUtilisations
+                                FROM gestion
+                                INNER JOIN experimentation ON experimentation.ID_EXP = gestion.ID_EXP
+                                INNER JOIN modele ON modele.ID_MODELE = experimentation.ID_MODELE
+                                WHERE gestion.ID_USER = :id
+                                GROUP BY modele.ID_MODELE, modele.NOM_MODELE, modele.DESC_MODELE
+                                ORDER BY nbUtilisations DESC, modele.NOM_MODELE');
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

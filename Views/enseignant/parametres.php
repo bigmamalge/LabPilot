@@ -1,13 +1,4 @@
 <?php
-  $espace = "Espace enseignant-chercheur";
-  $prenom = "John";
-  $nom = "Doeuf";
-  $nom_complet = $prenom . " " . $nom;
-  $initiales = "JD";
-  $fonction = "Enseignant-chercheur (LIUM)";
-  $email = "john.doeuf@univ-lemans.fr";
-  $poste = "Enseignant-chercheur";
-
   $baseUrl = "index.php?Role=1&amp;Page=8";
   $sections = [
     'profil'          => ['label' => 'Profil',                  'icone' => 'par_Trace1.svg', 'fichier' => 'profil.php'],
