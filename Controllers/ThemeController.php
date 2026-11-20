@@ -24,6 +24,7 @@ $themeUser = $themeModel->getUtilisateurById($_SESSION["id"]);
 
 $theme = $themeUser["THEME_USER"] ?? "Clair";
 $themeInverse = $theme === "Sombre" ? "Clair" : "Sombre";
+$dossierIcones = $theme === "Sombre" ? "Sombre" : "Common";
 $langue = $themeUser["LANG_USER"] ?? "FR";
 $libelleLangue = $langue === "EN" ? "EN - English" : "FR - Français";
 $themeRetour = "index.php?" . ($_SERVER["QUERY_STRING"] ?? "");

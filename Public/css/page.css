@@ -313,13 +313,6 @@ table.plain td b { color: var(--text); }
 :root[data-theme="Sombre"] img[src$="/res_Pin.svg"],
 :root[data-theme="Sombre"] img[src$="/stat_ChevronDown.svg"],
 :root[data-theme="Sombre"] img[src$="/stat_ChevronDown1.svg"] { filter: brightness(0) invert(1); }
-:root[data-theme="Sombre"] img[src$="/BoutonActionLigne1.svg"],
-:root[data-theme="Sombre"] img[src$="/BoutonActionInscription1.svg"],
-:root[data-theme="Sombre"] img[src$="/Groupe.svg"],
-:root[data-theme="Sombre"] img[src$="/Groupe1.svg"],
-:root[data-theme="Sombre"] img[src$="/part_Accept.svg"],
-:root[data-theme="Sombre"] img[src$="/part_Refuse.svg"],
-:root[data-theme="Sombre"] img[src$="/Notifications.svg"] { filter: invert(1) hue-rotate(180deg); }
 :root[data-theme="Sombre"] img[src$="/CercleIcone.svg"],
 :root[data-theme="Sombre"] img[src$="/IconeValidation.svg"] { filter: brightness(1.9); }
 :root[data-theme="Sombre"] .select select { background-image: url("../assets/Common/plan_ChevronDownLight.svg"); }
@@ -330,8 +323,3 @@ table.plain td b { color: var(--text); }
 .chart-grid { stroke: var(--border); }
 .chart-dot { fill: var(--surface); }
 .chart-lab { fill: var(--text-secondary); }
-
-:root[data-theme="Sombre"] img[src$="/Groupe.svg"],
-:root[data-theme="Sombre"] img[src$="/Groupe1.svg"],
-:root[data-theme="Sombre"] img[src$="/part_Accept.svg"],
-:root[data-theme="Sombre"] img[src$="/part_Refuse.svg"] { filter: invert(1) hue-rotate(180deg) brightness(1.5) saturate(1.6); }

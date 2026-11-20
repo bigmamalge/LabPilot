@@ -30,7 +30,7 @@
         <?php require __DIR__ . "/../commun/themeBouton.php"; ?>
         <button class="lang" type="button"><?php echo $libelleLangue; ?> <img src="Public/assets/Common/FlecheBas.svg" alt=""></button>
         <button class="icon-btn bell" type="button" aria-label="Notifications"><img
-            src="Public/assets/Common/Notifications.svg" alt=""></button>
+            src="Public/assets/<?php echo $dossierIcones; ?>/Notifications.svg" alt=""></button>
         <div class="profile">
           <span class="avatar"><?php echo $initiales; ?></span>
           <span class="who"><b><?php echo $nom_complet; ?></b><span><?php echo $fonction; ?></span></span>
@@ -107,7 +107,7 @@
                 }
                 foreach ($experimentations as $exp) {
                   $boutonPlanning = $exp['STATUT'] === 'draft' ? '' : '<button class="ghost" type="button"><img
-                          src="Public/assets/Common/BoutonActionLigne1.svg" alt="Voir le planning"></button>';
+                          src="Public/assets/' . $dossierIcones . '/BoutonActionLigne1.svg" alt="Voir le planning"></button>';
                   echo '<tr data-status="' . $exp['STATUT'] . '">
                   <td class="name"><b>' . htmlspecialchars($exp['TITRE_EXP']) . '</b><small>' . $exp['PERIODE'] . '</small></td>
                   <td><span class="pill ' . $exp['CLASSE_STATUT'] . '">' . $exp['LIBELLE_STATUT'] . '</span></td>
@@ -117,7 +117,7 @@
                   <td>' . htmlspecialchars($exp['PROCHAIN_CRENEAU']) . '</td>
                   <td>
                     <div class="row-actions">' . $boutonPlanning . '<button
-                        class="ghost" type="button"><img src="Public/assets/Common/BoutonActionInscription1.svg"
+                        class="ghost" type="button"><img src="Public/assets/' . $dossierIcones . '/BoutonActionInscription1.svg"
                           alt="Modifier"></button></div>
                   </td>
                 </tr>';
@@ -144,9 +144,9 @@
                 <div class="info"><b>' . $nomInscrit . '</b><span>' . htmlspecialchars($inscription['TITRE_EXP']) . ' (créneau ' . $inscription['JOUR_HEURE_CREN'] . ')</span></div>
                 <div class="btns">
                   <button class="ghost" type="button" aria-label="Accepter ' . $nomInscrit . '"><img
-                      src="Public/assets/Common/Groupe.svg" alt=""></button>
+                      src="Public/assets/' . $dossierIcones . '/Groupe.svg" alt=""></button>
                   <button class="ghost" type="button" aria-label="Refuser ' . $nomInscrit . '"><img
-                      src="Public/assets/Common/Groupe1.svg" alt=""></button>
+                      src="Public/assets/' . $dossierIcones . '/Groupe1.svg" alt=""></button>
                 </div>
               </div>';
               }

@@ -71,7 +71,7 @@
               $nomParticipant = htmlspecialchars($participant['PRENOM_USER'] . ' ' . $participant['NOM_USER']);
               $retribution = $participant['LIBELLE_RETRIB'] !== null ? '<span class="tag ' . $participant['CLASSE_RETRIB'] . '">' . $participant['LIBELLE_RETRIB'] . '</span>' : '-';
               if ($participant['STATUT_INSC'] === 'En attente') {
-                $actions = '<button class="ghost" type="button" aria-label="Accepter ' . $nomParticipant . '"><img src="Public/assets/Common/part_Accept.svg" alt=""></button><button class="ghost" type="button" aria-label="Refuser ' . $nomParticipant . '"><img src="Public/assets/Common/part_Refuse.svg" alt=""></button>';
+                $actions = '<button class="ghost" type="button" aria-label="Accepter ' . $nomParticipant . '"><img src="Public/assets/' . $dossierIcones . '/part_Accept.svg" alt=""></button><button class="ghost" type="button" aria-label="Refuser ' . $nomParticipant . '"><img src="Public/assets/' . $dossierIcones . '/part_Refuse.svg" alt=""></button>';
               } else {
                 $actions = '<a class="ghost eye" href="index.php?Role=2&Page=4&Par=' . $participant['ID_PAR'] . '" aria-label="Voir le profil de ' . $nomParticipant . '"><img src="Public/assets/Common/part_Eye.svg" alt=""></a>';
               }
@@ -100,8 +100,8 @@
                 $nomDemandeur = htmlspecialchars($demande['PRENOM_USER'] . ' ' . $demande['NOM_USER']);
                 $selection = $profil !== null && $profil['ID_PAR'] == $demande['ID_PAR'] && $profil['ID_CREN'] == $demande['ID_CREN'] ? ' sel' : '';
                 echo '<div class="req' . $selection . '"><span class="av">' . htmlspecialchars($demande['INITIALES']) . '</span><div class="info"><b>' . $nomDemandeur . '</b><span>' . htmlspecialchars($demande['TITRE_EXP']) . ' - ' . $demande['JOUR_HEURE_CREN'] . '</span></div>
-                <button class="ghost" type="button" aria-label="Accepter ' . $nomDemandeur . '"><img src="Public/assets/Common/part_Accept.svg" alt=""></button>
-                <button class="ghost" type="button" aria-label="Refuser ' . $nomDemandeur . '"><img src="Public/assets/Common/part_Refuse.svg" alt=""></button></div>';
+                <button class="ghost" type="button" aria-label="Accepter ' . $nomDemandeur . '"><img src="Public/assets/' . $dossierIcones . '/part_Accept.svg" alt=""></button>
+                <button class="ghost" type="button" aria-label="Refuser ' . $nomDemandeur . '"><img src="Public/assets/' . $dossierIcones . '/part_Refuse.svg" alt=""></button></div>';
               }
               ?>
             </div>
